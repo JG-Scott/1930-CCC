@@ -1,1 +1,1 @@
-"This project was created at BCIT by 3 young individuals." 
+"This project was created at BCIT by 3 young individuals."
