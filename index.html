@@ -1,19 +1,107 @@
-<<<<<<< HEAD
-<!--SEAN WHAT HAVE YOU DONE!-->
-<!-- Cearting some issues for personal reasons. -->
-
-<!-- Not sure what happened to johnny. -->
-<!-- ahoy me boys, let us obtain grain through pain and determination -->
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Car Cost Calculator</title>
-    <meta charset="utf-8"/>
-  </head>
-  <body>
-    <h1>Welcome to The Car Cost Calculator</h1>
-    <p>by <a href="quickcalc.html">Sean</a>, <a href="vehicleSelect.html" >Kyle</a>, and <a href="VehicleComparer.html">Johnny</a>.
-    </p>
-  </body>
+    <meta charset="utf-8" />
+    <style>
+        #header {
+            text-align: center;
+            font-family: 'roboto';
+            text-shadow: 2px 2px 3px #ffffff;         
+            font-size: 3em;   
+        }
+
+        body{
+            margin: 0px;
+            padding: 0px;
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: linear-gradient(#07C20F, #ADFFB0);
+        
+        }
+
+    </style>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBNwAVK2VOqqnwtn1Cr5rvfqbVg686C5Ao",
+            authDomain: "oct31-ab8ee.firebaseapp.com",
+            databaseURL: "https://oct31-ab8ee.firebaseio.com",
+            projectId: "oct31-ab8ee",
+            storageBucket: "oct31-ab8ee.appspot.com",
+            messagingSenderId: "884426103432",
+            appId: "1:884426103432:web:e35ed78aafea97b7789d3d"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+
+</head>
+
+<body>
+    <div id="bodyContainer">
+    <h1 id="header">Car Cost Calculator</h1>
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+</div>
+    <script>
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        var uiConfig = {
+            callbacks: {
+                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                    // User successfully signed in.
+                    // Return type determines whether we continue the redirect automatically
+                    // or whether we leave that to developer to handle.
+                    return true;
+                },
+                uiShown: function() {
+                    // The widget is rendered.
+                    // Hide the loader.
+                    document.getElementById('loader').style.display = 'none';
+                }
+            },
+            // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+            signInFlow: 'popup',
+            signInSuccessUrl: '<main.html>',
+            signInOptions: [
+                // Leave the lines as is for the providers you want to offer your users.
+                /*firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+                firebase.auth.GithubAuthProvider.PROVIDER_ID,*/
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+            ],
+            // Terms of service url.
+            tosUrl: '<main.html>',
+            // Privacy policy url.
+            privacyPolicyUrl: '<main.html>'
+        };
+
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+
+
+
+    </script>
+</body>
+
+
+
 </html>
