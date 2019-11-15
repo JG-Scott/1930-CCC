@@ -1,1 +1,59 @@
-the quicker calculator 
+<!DOCTYPE html>
+<!--
+Main CarCostCalculator Page
+Last member editing: Kyle-Herrmann.
+-->
+
+<html lang='en'>
+
+<head>
+
+    <title>Car Cost Calculator</title>
+    <meta charset="en" />
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+        <!-- The firebase configuration for our project-->
+        <script src="scripts/firebase_config_ccc.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-- CCC Main Banner -->
+    <header>
+        The Car Cost Calculator
+    </header>
+
+    <!-- Main Buttons -->
+    <div id="buttonContainer">
+        <p>This shit quick</p>
+        <!-- Vehicle profile -->
+        <input id="home" class="buttonDesign" name="home" type="button" value="home button" onclick="window.location.href='main.html'" />
+
+    </div>
+    <script src="scripts/create_user.js"></script>
+    <script src="scripts/app.js"></script>
+    <script>
+        createUser();
+    </script>
+    
+    
+</body>
+
+
+
+</html>
+
