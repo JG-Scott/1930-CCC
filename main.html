@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-Main CarCostCalculator Page
-Last member editing: Kyle-Herrmann.
--->
-
 <html lang='en'>
 
 <head>
@@ -24,8 +19,8 @@ Last member editing: Kyle-Herrmann.
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-        <!-- The firebase configuration for our project-->
-        <script src="scripts/firebase_config_ccc.js"></script>
+    <!-- The firebase configuration for our project-->
+    <script src="scripts/firebase_config_ccc.js"></script>
 
 
 </head>
@@ -36,15 +31,18 @@ Last member editing: Kyle-Herrmann.
     <header>
         The Car Cost Calculator
     </header>
+    <h1 id="name"></h1>
 
     <!-- Main Buttons -->
     <div id="buttonContainer">
         <!-- Vehicle profile -->
         <input id="vehicleProfile" class="buttonDesign" name="vehicleProfile" type="button" value="Vehicle Profile" />
         <!-- Car cost calculator -->
-        <input id="carCostCalculator" class="buttonDesign" name="carCostCalculator" type="button" value="Car Cost Calculator" />
+        <input id="carCostCalculator" class="buttonDesign" name="carCostCalculator" type="button"
+            value="Car Cost Calculator" />
         <!-- Quick trip calculator -->
-        <input id="quickTripCalculator" class="buttonDesign" name="quickTripCalculator" type="button" value="Quick Trip Calculator" />
+        <input id="quickTripCalculator" class="buttonDesign" name="quickTripCalculator" type="button"
+            value="Quick Trip Calculator" />
         <!-- Car Comparer -->
         <input id="carComprer" class="buttonDesign" name="carComprer" type="button" value="Car Comparer" />
     </div>
@@ -52,6 +50,7 @@ Last member editing: Kyle-Herrmann.
     <script src="scripts/app.js"></script>
     <script>
         createUser();
+        showName();
     </script>
 </body>
 
