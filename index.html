@@ -4,25 +4,7 @@
 <head>
     <title>Car Cost Calculator</title>
     <meta charset="utf-8" />
-    <style>
-        #header {
-            text-align: center;
-            font-family: 'roboto';
-            text-shadow: 2px 2px 3px #ffffff;         
-            font-size: 3em;   
-        }
-
-        body{
-            margin: 0px;
-            padding: 0px;
-            height: 100vh;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-image: linear-gradient(#07C20F, #ADFFB0);
-        
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -34,30 +16,16 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyBNwAVK2VOqqnwtn1Cr5rvfqbVg686C5Ao",
-            authDomain: "oct31-ab8ee.firebaseapp.com",
-            databaseURL: "https://oct31-ab8ee.firebaseio.com",
-            projectId: "oct31-ab8ee",
-            storageBucket: "oct31-ab8ee.appspot.com",
-            messagingSenderId: "884426103432",
-            appId: "1:884426103432:web:e35ed78aafea97b7789d3d"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-    </script>
+    <!-- The firebase configuration for our project-->
+    <script src="scripts/firebase_config_ccc.js"></script>
 
 </head>
 
 <body>
-    <div id="bodyContainer">
-    <h1 id="header">Car Cost Calculator</h1>
+
+    <header>Car Cost Calculator</h1>
     <div id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
-</div>
     <script>
         // Initialize the FirebaseUI Widget using Firebase.
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -78,7 +46,7 @@
             },
             // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
             signInFlow: 'popup',
-            signInSuccessUrl: '<main.html>',
+            signInSuccessUrl: 'main.html',
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 /*firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -89,9 +57,9 @@
                 //firebase.auth.PhoneAuthProvider.PROVIDER_ID
             ],
             // Terms of service url.
-            tosUrl: '<main.html>',
+            tosUrl: '<>',
             // Privacy policy url.
-            privacyPolicyUrl: '<main.html>'
+            privacyPolicyUrl: '<>'
         };
 
         // The start method will wait until the DOM is loaded.
@@ -100,6 +68,11 @@
 
 
     </script>
+   
+        <script>
+
+        </script>
+
 </body>
 
 

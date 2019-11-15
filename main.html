@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Main CarCostCalculator Page
+Last member editing: Kyle-Herrmann.
+-->
+
+<html lang='en'>
+
+<head>
+
+    <title>Car Cost Calculator</title>
+    <meta charset="en" />
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+        <!-- The firebase configuration for our project-->
+        <script src="scripts/firebase_config_ccc.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-- CCC Main Banner -->
+    <header>
+        The Car Cost Calculator
+    </header>
+
+    <!-- Main Buttons -->
+    <div id="buttonContainer">
+        <!-- Vehicle profile -->
+        <input id="vehicleProfile" class="buttonDesign" name="vehicleProfile" type="button" value="Vehicle Profile" />
+        <!-- Car cost calculator -->
+        <input id="carCostCalculator" class="buttonDesign" name="carCostCalculator" type="button" value="Car Cost Calculator" />
+        <!-- Quick trip calculator -->
+        <input id="quickTripCalculator" class="buttonDesign" name="quickTripCalculator" type="button" value="Quick Trip Calculator" />
+        <!-- Car Comparer -->
+        <input id="carComprer" class="buttonDesign" name="carComprer" type="button" value="Car Comparer" />
+    </div>
+    <script src="scripts/create_user.js"></script>
+    <script src="scripts/app.js"></script>
+    <script>
+        createUser();
+        showName();
+        showCaffeineCount();
+        setAddListener();
+        showHistory();
+    </script>
+</body>
+
+
+
+</html>
