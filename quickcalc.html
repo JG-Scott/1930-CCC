@@ -38,7 +38,10 @@ Last member editing: Kyle-Herrmann.
     </header>
     <h1>Select a gas type:</h1>
     <!-- Main Buttons -->
-    <div id="gasTypes"></div>
+
+    <div id="gasTypes">
+        <button id="gasTypes">Gas Types</button>
+    </div>
 
     <!-- Nav Bar -->
     <nav>
@@ -50,7 +53,20 @@ Last member editing: Kyle-Herrmann.
     <script src="scripts/create_user.js"></script>
     <script src="scripts/app.js"></script>
     <script>
-
+        function showCaffeineCount(n) {
+  firebase.auth().onAuthStateChanged(function (user) {
+    db.collection("gas/").doc("regular")
+      .onSnapshot(function (d) {
+        console.log("Current data: ", d.data());
+        if (d.get("price") != null)
+          x = d.data()["price"];
+        else
+          x = 0; // user has not added any cups yet
+        console.log(x);
+        document.getElementById("caffeinecount").innerHTML = x;
+      });
+  })
+}
     </script>
 
 
