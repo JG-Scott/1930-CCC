@@ -2,9 +2,27 @@
 // This files contains all the javascript functions
 // used in the project
 //
-// @author Fierce Brosnan
-// @version 0.1
+// @author Carly Orr
+// @version 1.0
 //=================================================
+
+// ---------------------------------------------
+// Display the current Caffeine Count (id="caffeinecount")
+// ---------------------------------------------
+function showCaffeineCount(n) {
+  firebase.auth().onAuthStateChanged(function (user) {
+    db.collection("users/").doc(user.uid)
+      .onSnapshot(function (d) {
+        console.log("Current data: ", d.data());
+        if (d.get("total") != null)
+          x = d.data()["total"];
+        else
+          x = 0; // user has not added any cups yet
+        console.log(x);
+        document.getElementById("caffeinecount").innerHTML = x;
+      });
+  })
+}
 
 // ---------------------------------------------
 // Display the current Date (id="today")
@@ -30,10 +48,9 @@ function setAddListener() {
       var userRef = db.collection('users').doc(user.uid);
 
       // add a date to the history sub-collection
-      var d = new Date();
       userRef.collection("history").add({
-        date: d
-      })
+        date: firebase.firestore.FieldValue.serverTimestamp()
+      });
 
       // increment total field
       // use FieldValue.increment function to increment a field
@@ -74,7 +91,7 @@ function logoutUser() {
 // ---------------------------------------------
 function showName() {
   firebase.auth().onAuthStateChanged(function (user) {
-    //console.log(user);
+    console.log(user);
     document.getElementById("name").innerHTML = user.displayName;
   });
 }
@@ -103,8 +120,6 @@ function showHistory() {
   });
 }
 
-
-
 // ---------------------------------------------
 // If the currently logged in user is authenticated,
 // then save the person's goal (id = "goal")
@@ -112,10 +127,16 @@ function showHistory() {
 function saveGoal() {
 
   // firebase.auth().onAuthStateChanged(function (user) {
-  //   let document.getElementById("goal").
+  //   document.getElementById("goal").
   //     db.collection("users/").doc(user.uid)
   //       .update({
   //           goal: g
   //         })
   // })
+}
+
+function setFormListener() {
+  document.getElementById("customRadio1").addEventListener("click", function (e) {
+    console.log("first button pressed!")
+  });
 }
