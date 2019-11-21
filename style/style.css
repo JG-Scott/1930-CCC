@@ -11,9 +11,13 @@ body{
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(219, 181, 11), #ADFFB0);
+    background: linear-gradient(180deg, #07C20F 19.27%, #ADFFB0 100%);
 
 }
 #firebaseui-auth-container {
     width: 100vw;
+}
+#buttonContainer {
+    text-align: center;
+
 }
