@@ -8,7 +8,7 @@ Last member editing: Kyle-Herrmann.
 
 <head>
 
-    <title>Car Cost Calculator</title>
+    <title>Quick Trip Calculator</title>
     <meta charset="en" />
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <link rel="stylesheet" type="text/css" href="style/style.css">
@@ -26,6 +26,8 @@ Last member editing: Kyle-Herrmann.
 
     <!-- The firebase configuration for our project-->
     <script src="scripts/firebase_config_ccc.js"></script>
+    <script src="scripts/create_user.js"></script>
+    <script src="scripts/app.js"></script>
 
 
 </head>
@@ -36,11 +38,18 @@ Last member editing: Kyle-Herrmann.
     <header>
         The Quick Trip Calculator
     </header>
-    <h1>Select a gas type:</h1>
     <!-- Main Buttons -->
 
     <div id="gasTypes">
-        <button id="gasTypes">Gas Types</button>
+        <h1>Please choose a grade of gas:</h1>
+        <button id="regular" onclick="getRegPrice()">Regular</button>
+        <button id="mid" onclick="getMidPrice()">Mid</button>
+        <button id="premium"onclick="getPremPrice()">Premium</button>
+        <h2 id="displayPrice">Please choose a grade.</h2>
+        <form>
+        <input type="text" id="newPrice"/>
+            <input type="submit" onclick="setRegGas()">
+    </form>   
     </div>
 
     <!-- Nav Bar -->
@@ -50,25 +59,40 @@ Last member editing: Kyle-Herrmann.
             onclick="window.location.href='main.html'" />
 
     </nav>
-    <script src="scripts/create_user.js"></script>
-    <script src="scripts/app.js"></script>
-    <script>
-        function showCaffeineCount(n) {
-  firebase.auth().onAuthStateChanged(function (user) {
-    db.collection("gas/").doc("regular")
-      .onSnapshot(function (d) {
-        console.log("Current data: ", d.data());
-        if (d.get("price") != null)
-          x = d.data()["price"];
-        else
-          x = 0; // user has not added any cups yet
-        console.log(x);
-        document.getElementById("caffeinecount").innerHTML = x;
-      });
-  })
-}
-    </script>
 
+    <script>
+        function getRegPrice() {
+
+            db.collection("gas").doc("regular").onSnapshot(function(doc) {
+                 document.getElementById("displayPrice").innerHTML = "Price: " + doc.get("price");                
+            });
+        }
+        function getMidPrice() {
+            
+            db.collection("gas").doc("mid").onSnapshot(function(doc) {
+                 document.getElementById("displayPrice").innerHTML = "Price: " + doc.get("price");                
+            });
+        }
+        function getPremPrice() {
+            
+            db.collection("gas").doc("premium").onSnapshot(function(doc) {
+                 document.getElementById("displayPrice").innerHTML = "Price: " + doc.get("price");                
+            });
+        }
+        function setRegGas() {
+            db.collection("gas").doc("regular").set({
+                price: document.getElementById("newPrice").value
+            })
+        }
+        // function myFunction() {
+            
+        //     db.collection("gas/").doc("regular").onSnapshot(function(doc) {
+        //         document.getElementById("gasTypes").innerHTML = "Price of Reg: " + doc.get("price");                
+        //     });
+        // }
+
+    </script>
+    
 
 </body>
 
