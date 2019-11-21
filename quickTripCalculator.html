@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+Main CarCostCalculator Page
+Last member editing: Kyle-Herrmann.
+-->
+
+<html lang='en'>
+
+<head>
+
+    <title>Quick Trip Calculator</title>
+    <meta charset="en" />
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+    <!-- The firebase configuration for our project-->
+    <script src="scripts/firebase_config_ccc.js"></script>
+    <script src="scripts/qtapp.js"></script>
+   
+
+
+</head>
+
+<body>
+
+    <!-- CCC Main Banner -->
+    <header>
+        The Quick Trip Calculator
+    </header>
+    <!-- Main Buttons -->
+
+    <div id="gasTypes">
+        <h1>Please choose a grade of gas:</h1>
+        <button id="regular" onclick="getRegPrice()">Regular</button>
+        <button id="mid" onclick="getMidPrice()">Mid</button>
+        <button id="premium"onclick="getPremPrice()">Premium</button>
+        <h2 id="displayPrice">Please choose a grade.</h2>
+        <form>
+        <input type="text" id="newPrice"/>
+            <input type="submit" onclick="setRegGas()">
+    </form>   
+    </div>
+
+    <!-- Nav Bar -->
+    <nav>
+        <!-- Home Button -->
+        <input id="home" class="buttonDesign" name="h" type="button" value="home button"
+            onclick="window.location.href='main.html'" />
+
+    </nav>
+
+    <script>
+    </script>
+    
+
+</body>
+
+
+
+</html>
