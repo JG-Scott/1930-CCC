@@ -4,11 +4,16 @@ header {
     text-shadow: 2px 2px 3px #ffffff;         
     font-size: 3em;   
 }
+header img {
+    padding: 4%;
+    width: 100%;
+}
 
 body{
     margin: 0px;
     padding: 0px;
     height: 100vh;
+    font-family: fantasy;
     background-size: cover;
     background-repeat: no-repeat;
     background: linear-gradient(180deg, #07C20F 19.27%, #ADFFB0 100%);
@@ -17,7 +22,9 @@ body{
 #firebaseui-auth-container {
     width: 100vw;
 }
-#buttonContainer {
+#buttonContainer *{
+    width: 100%;
     text-align: center;
-
+    padding: 12pt;
+    font-size: 75pt;
 }
