@@ -10,6 +10,7 @@ header img {
 }
 
 body{
+    text-align: center;
     margin: 0px;
     padding: 0px;
     height: 100vh;
@@ -29,3 +30,10 @@ body{
     padding: 12pt;
     font-size: 75pt;
 }
+#quickTripCalc *{
+  
+        width: 100%;
+        text-align: center;
+        padding: 1pt;
+        font-size: 24pt;
+    }
