@@ -24,14 +24,21 @@ body{
 
 
 }
+
+#carCostMain {
+    margin: 50px;
+    text-align: left;
+}
+
+
 #buttonContainer *{
     width: 100%;
     text-align: center;
     padding: 12pt;
     font-size: 75pt;
 }
+
 #quickTripCalc *{
-  
         width: 100%;
         text-align: center;
         padding: 1pt;
