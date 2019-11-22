@@ -21,7 +21,14 @@ body{
 
 }
 
-
+nav {
+    padding: 10%;
+}
+nav button{
+    width: 100%;
+    text-align: center;
+    padding: 12pt;
+    font-size: 10pt;
 }
 
 #carCostMain {
