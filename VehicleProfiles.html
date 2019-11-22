@@ -52,7 +52,7 @@
         $('#save_button').click(function() {
             //this code identifies the database location and adds the inputted info into it.
             firebase.auth().onAuthStateChanged(function (user) {
-            db.collection("users").doc("test").set({
+            db.collection("users").doc(user.uid).update({
                 "Car Type": document.getElementById('carTypeinfo').value,
                 "Engine Type": document.getElementById('engineTypeinfo').value,
                 "Gas Type":document.getElementById('gasTypeinfo').value,

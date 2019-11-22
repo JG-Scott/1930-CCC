@@ -1,4 +1,5 @@
 var gasPrice;
+//All of theses read from the database
         function getRegPrice() {
 
             db.collection("gas").doc("regular").onSnapshot(function(doc) {
@@ -17,6 +18,7 @@ var gasPrice;
                  document.getElementById("display").innerHTML = "Price: " + doc.get("price");                
             });
         }
+        //This one dont work yet
         function setRegGas() {
             db.collection("gas").doc("regular").set({
                 price: 122
