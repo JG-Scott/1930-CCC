@@ -27,7 +27,7 @@ Last member editing: Kyle-Herrmann.
     <!-- The firebase configuration for our project-->
     <script src="scripts/firebase_config_ccc.js"></script>
     <script src="scripts/qtapp.js"></script>
-    
+
     <!--BootStrap links  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -50,26 +50,42 @@ Last member editing: Kyle-Herrmann.
     <h1 id="display">Select a gas grade:</h1>
 
     <div id="quickTripCalc">
+
         <div id="b1">
             <button type="button" class="btn btn-success" onclick="getRegPrice()">Regular</button>
         </div>
         <div id="b2">
             <button type="button" class="btn btn-success" onclick="getMidPrice()">Mid-Gade</button>
-        </div>
-        <div id="b3">
-            <button type="button" class="btn btn-success" onclick="getPremPrice()">Premium</button>
-        </div>
-        <div id="b4">
-            <button type="button" class="btn btn-success" onclick="setRegPrice()">Diesel</button>
+
+            <div id="b1">
+
+            </div>
+            <div id="b2">
+
+
+            </div>
+            <div id="b3">
+
+            </div>
+            <div id="b4">
+
+
+            </div>
+
+            <nav>
+                <!-- Home Button -->
+                <button type="button" class="btn btn-success" onclick="window.location.href='main.html'">Home</button>
+            </nav>
 
         </div>
 
-        <nav>
-            <!-- Home Button -->
-            <button type="button" class="btn btn-success" onclick="window.location.href='main.html'">Home</button>
-        </nav>
+
+        <script>
+            goVehicle();
+
+        </script>
     </div>
-    
+
 </body>
 
 </html>
