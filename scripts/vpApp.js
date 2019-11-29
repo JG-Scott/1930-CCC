@@ -1,5 +1,6 @@
 var gasPrice;
 var MPG;
+var carType;
 var tripDistance;
 var stage;
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -16,6 +17,7 @@ function getCoupMPG() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "mpg": "22",
+            "car": "Coupe",
         });
     });
 }
@@ -30,6 +32,7 @@ function getSUVMPG() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "mpg": "30",
+            "car": "SUV"
         });
     });
 
@@ -45,6 +48,7 @@ function getSedanMPG() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "mpg": "45",
+            "car": "Sedan"
         });
     });
 
@@ -61,6 +65,7 @@ function getTruckMPG() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "mpg": "48",
+            "car": "Truck"
         });
     });
 
@@ -119,11 +124,12 @@ function getRegPrice() {
     db.collection("Gas").doc("Regular").onSnapshot(function (doc) {
         gasPrice = doc.get("Price(CA)");
         console.log(gasPrice);
-       
+
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "gas": "1.46",
+            "gasType": "Regular"
         });
     });
     getCurrentProfile();
@@ -134,11 +140,12 @@ function getMidPrice() {
     db.collection("Gas").doc("Mid-Grade").onSnapshot(function (doc) {
         gasPrice = doc.get("Price(CA)");
         console.log(gasPrice);
-      
+
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "gas": "5.88",
+            "gasType": "Mid-grade"
         });
     });
     getCurrentProfile();
@@ -149,11 +156,12 @@ function getPremPrice() {
     db.collection("Gas").doc("Premium").onSnapshot(function (doc) {
         gasPrice = doc.get("Price(CA)");
         console.log(gasPrice);
-        
+
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "gas": "6.12",
+            "gasType": "Premium"
         });
     });
     getCurrentProfile();
@@ -163,11 +171,12 @@ function getDieselPrice() {
     db.collection("Gas").doc("Diesel").onSnapshot(function (doc) {
         gasPrice = doc.get("Price(CA)");
         console.log(gasPrice);
-        
+
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "gas": "5.84",
+            "gasType": "Diesel"
         });
     });
     getCurrentProfile();
@@ -187,7 +196,7 @@ function getDieselPrice() {
 ///////////////////////////////////////////////////////////////////////////////
 function goVehicleProfile() {
 
-    document.getElementById("display").innerHTML = "Select a vehicle:"
+    document.getElementById("display").innerHTML = "<h2>Select a vehicle:</h2>"
     document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="getCoupMPG()">Coup</button>';
     document.getElementById("b2").innerHTML = '<button type="button" class="btn btn-success" onclick="getSUVMPG()">SUV</button>';
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="getSedanMPG()">Sedan</button>';
@@ -196,7 +205,7 @@ function goVehicleProfile() {
 
 function goCommute() {
 
-    document.getElementById("display").innerHTML = "Select a Trip:"
+    document.getElementById("display").innerHTML = "<h2>Select a Trip:</h2>"
     document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="getLangleyDistance()">BCIT to Langley</button>';
     document.getElementById("b2").innerHTML = '<button type="button" class="btn btn-success" onclick="getAbbotsfordDistance()">BCIT to Abbotsford</button>';
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="getPMDistance()">BCIT to Port Moody</button>';
@@ -205,7 +214,7 @@ function goCommute() {
 
 function goGas() {
 
-    document.getElementById("display").innerHTML = "Select gas grade:"
+    document.getElementById("display").innerHTML = "<h2>Select gas grade:</h2>"
     document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="getRegPrice()">Regular</button>';
     document.getElementById("b2").innerHTML = '<button itype="button" class="btn btn-success" onclick="getMidPrice()">Mid-Gade</button>';
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="getPremPrice()">Premium</button>';
@@ -216,7 +225,27 @@ function goGas() {
 ///////////////////////////////Code That Builds The Display/////////////////
 ////////////////////////////////////////////////////////////////////////////
 function getCurrentProfile() {
-    document.getElementById("display").innerHTML = "(<h1>Car Type: " + carType + "</h1><h2>Commute: " + tripDistance + " miles</h2><h2>Gas Cost: " + gasPrice + "</h2>";
+
+    document.getElementById("display").innerHTML = "(<h1>Car Type: " + carType + "</h1><h2>Commute: " + tripDistance + " miles</h2><h2>Fuel: " + gasPrice + "</h2>";
+    document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
+    document.getElementById("b2").innerHTML = "";
+    document.getElementById("b3").innerHTML = "";
+    document.getElementById("b4").innerHTML = "";
+}
+
+// function getUserDetails() {
+//     firebase.auth().onAuthStateChanged(function (user) {
+//         db.collection("users").doc(user.uid).onSnapshot(function (doc) {
+//             carType = doc.get("car");
+//             tripDistance = doc.get("commute");
+//             gasPrice = doc.get("gasType)");
+//             console.log(gasPrice);
+//         });
+//     })
+// };
+function newProfile() {
+
+    document.getElementById("display").innerHTML = "<h1>No Profile</h1>";
     document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
     document.getElementById("b2").innerHTML = "";
     document.getElementById("b3").innerHTML = "";
