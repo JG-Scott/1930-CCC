@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Local styling -->
+<style>
+    body {
+        text-align: center;
+    }
+
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #4CAF50;
+        font-family: fantasy;
+        width: 100%;
+        height: 25px;
+        color: black;
+        font-size: 18px;
+        border: none;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        background-color:#4CAF50;
+;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+        background-color: #ddd;
+    }
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+</style>
+<!--
+    Page to input and save common trips
+-->
+
+<head lang="en">
+    <Title>Trip Select</Title>
+    <meta charset="utf-8">
+
+    <!-- Style sheet -->
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <!-- Links to jquery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <!-- The firebase configuration for our project-->
+    <script src="scripts/firebase_config_ccc.js"></script>
+</head>
+
+<body>
+    <header>
+        <img src="images/Logo.png" alt="logo">
+    </header>
+
+    <!-- Input trip -->
+    <h1>Trip Select</h1>
+
+    <!-- Location name -->
+    <p>Location Name</p>
+    <input type="text" value=""><br>
+    <!-- Location address -->
+    <p>Address</p>
+    <input type="text"><br>
+    <!-- Trip frequency -->
+    <div class="dropdown"> <br>
+        <button class="dropbtn">Trip Frequency</button>
+        <div class="dropdown-content">
+            <a href="#">1-2 / week</a>
+            <a href="#">3-4 / week</a>
+            <a href="#">5-7 / week</a>
+        </div>
+    </div>
+
+
+
+    <script>
+        //THIS CODE IS TOO POWERFUL.
+
+        //this code sets the on click save function for the save button
+        $('#save_button').click(function () {
+            //this code identifies the database location and adds the inputted info into it.
+            firebase.auth().onAuthStateChanged(function (user) {
+                db.collection("users").doc(user.uid).update({
+                    "Car Type": document.getElementById('carTypeinfo').value,
+                    "Engine Type": document.getElementById('engineTypeinfo').value,
+                    "Gas Type": document.getElementById('gasTypeinfo').value,
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
