@@ -4,7 +4,7 @@
 function getRegPrice() {
 
     db.collection("Gas").doc("Regular").onSnapshot(function (doc) {
- 
+
     });
 }
 
@@ -18,7 +18,7 @@ function getMidPrice() {
 function getPremPrice() {
 
     db.collection("Gas").doc("Premium").onSnapshot(function (doc) {
-    
+
     });
 }
 
@@ -47,12 +47,14 @@ function goTrip() {
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="getChilliwackDistance()">BCIT to chilliwack</button>';
     document.getElementById("b4").innerHTML = "";
 }
+
 function goVehicle() {
     document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="getCoupWeight()">Coup</button>';
     document.getElementById("b2").innerHTML = '<button type="button" class="btn btn-success" onclick="getSUVWeight()">SUV</button>';
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="GetSedanWeight()">Sedan</button>';
     document.getElementById("b4").innerHTML = '<button type="button" class="btn btn-success" onclick="getTruckWeight()">Truck</button>';
 }
+
 function goGas() {
     document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="getRegPrice()">Regular</button>';
     document.getElementById("b2").innerHTML = '<button itype="button" class="btn btn-success" onclick="getMidPrice()">Mid-Gade</button>';
