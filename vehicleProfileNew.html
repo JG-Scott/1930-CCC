@@ -1,10 +1,14 @@
 <!DOCTYPE html>
+<!--
+Main CarCostCalculator Page
+-->
+
 <html lang='en'>
 
 <head>
 
-    <title>Car Cost Calculator</title>
-    <meta charset="en" />
+    <title>Quick Trip Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
@@ -21,6 +25,7 @@
 
     <!-- The firebase configuration for our project-->
     <script src="scripts/firebase_config_ccc.js"></script>
+    <script src="scripts/vpApp.js"></script>
 
     <!--BootStrap links  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -34,6 +39,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+
 </head>
 
 <body>
@@ -43,42 +49,42 @@
         <img src="images/Logo.png" alt="logo">
     </header>
 
-    <!-- Main Buttons -->
-    <div id="buttonContainer">
-        <div></div>
-        <div>
-            <button type="button" class="btn btn-success" onclick="window.location.href='VehicleProfileNew.html'">Vehicle
-                Profiles</button>
-        </div>
-        <div>
-            <button type="button" class="btn btn-success" onclick="window.location.href='completeCarCost.html'">Car Cost
-                Calculator</button>
-        </div>
-        <div>
-            <button type="button" class="btn btn-success"
-                onclick="window.location.href='quickTripCalculator.html'">Quick Trip Calculator</button>
-        </div>
-        <div>
-            <button type="button" class="btn btn-success" onclick="window.location.href='VehicleComparer.html'">Vehicle
-                Compare</button>
-        </div>
+
+    <div id="display">
+        <h1>Car Type:</h1>
+        <h2>Commute:</h2>
+        <h2>Gas Grade:</h2>
     </div>
-    <script src="scripts/create_user.js"></script>
-    <script src="scripts/app.js"></script>
-    <script>
-        createUser();
-    </script>
+
+    <div id="quickTripCalc">
+        <div id="b1">
+            <button type="button" class="btn btn-success" onclick="goVehicleProfile()">NEW</button>
+        </div>
+        <div id="b2">
+
+
+        </div>
+        <div id="b3">
+
+        </div>
+        <div id="b4">
+
+
+        </div>
+
+
+
+    </div>
+    <nav>
+        <!-- Home Button -->
+        <button type="button" class="btn btn-success" onclick="window.location.href='main.html'">Home</button>
+    </nav>
 
     <script>
-        function vehiclePageShift() {
-
-
-
-
-        }
+        getCurrentProfile();
     </script>
+
+
 </body>
-
-
 
 </html>
