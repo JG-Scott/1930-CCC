@@ -9,7 +9,7 @@ Last updated: November 22, 2019
 Regular(BC): $1.35
 Mid-Grade(BC): $1.47
 Premium(BC): $1.53
-Diesel(BC): $.46
+Diesel(BC): $1.46
 
 --- Vehicle Weight ---
 Collected: Various resources throughout the interwebs.

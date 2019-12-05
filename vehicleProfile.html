@@ -26,7 +26,7 @@ Main CarCostCalculator Page
 
     <!-- The firebase configuration for our project-->
     <script src="scripts/firebase_config_ccc.js"></script>
-    
+    <script src="scripts/vpApp.js"></script>
 
     <!--BootStrap links  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -56,7 +56,7 @@ Main CarCostCalculator Page
 
     </div>
 
-    <div id="vehicleProfile">
+    <div id="ccButtons">
         <div id="b1">
             <button type="button" class="btn btn-success" onclick="goVehicleProfile()">NEW</button>
         </div>
@@ -79,10 +79,9 @@ Main CarCostCalculator Page
         <!-- Home Button -->
         <button type="button" class="btn btn-success" onclick="window.location.href='main.html'">Home</button>
     </nav>
-    <script src="scripts/vpApp.js"></script>
+    
     <script>
         getUserDetails();
-
     </script>
 
 
