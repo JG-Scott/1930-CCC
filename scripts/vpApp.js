@@ -1,85 +1,83 @@
-var gasPrice;
-var MPG;
-var carType;
-var tripDistance;
-var stage;
+var vehicleType;
+var commute;
+var gasGrade;
+
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////Get vehicle weight from the DB//////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 function getCoupMPG() {
 
-    // db.collection("Vehicles").doc("Coup").onSnapshot(function (doc) {
-    //     MPG = doc.get("mpg");
-    //     carType = "Coupe"
-    //     console.log(MPG);
-    //     goCommute();
-    // });
+    db.collection("Vehicles").doc("Coup").onSnapshot(function (doc) {
+        MPG = doc.get("mpg");
+        carType = "Coupe"
+        console.log(MPG);
+
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "mpg": "22",
             "car": "Coupe",
         });
+        goCommute();
     });
 }
 
 function getSUVMPG() {
 
-    // db.collection("Vehicles").doc("SUV").onSnapshot(function (doc) {
-    //     MPG = doc.get("mpg");
-    //     console.log(MPG);
-    //     goCommute();
-    // });
+    db.collection("Vehicles").doc("SUV").onSnapshot(function (doc) {
+        MPG = doc.get("mpg");
+        console.log(MPG);
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "mpg": "30",
             "car": "SUV"
         });
     });
-
+    goCommute();
 }
 
 function getSedanMPG() {
 
-    // db.collection("Vehicles").doc("Sedan").onSnapshot(function (doc) {
-    //     MPG = doc.get("mpg");
-    //     console.log(MPG);
-    //     goCommute();
-    // });
+    db.collection("Vehicles").doc("Sedan").onSnapshot(function (doc) {
+        MPG = doc.get("mpg");
+        console.log(MPG);
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "mpg": "45",
             "car": "Sedan"
         });
     });
-
+    goCommute();
 }
 
 
 function getTruckMPG() {
 
-    // db.collection("Vehicles").doc("Truck").onSnapshot(function (doc) {
-    //     MPG = doc.get("mpg");
-    //     console.log(MPG);
-    //     goCommute();
-    // });
+    db.collection("Vehicles").doc("Truck").onSnapshot(function (doc) {
+        MPG = doc.get("mpg");
+        console.log(MPG);
+        
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "mpg": "48",
             "car": "Truck"
         });
     });
-
+    goCommute();
 }
 /////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////Get Distances From the DB/////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
 function getLangleyDistance() {
 
-    // db.collection("Trips").doc("BCITtoLangley").onSnapshot(function (doc) {
-    //     tripDistance = doc.get("Distance(KM)");
-    //     console.log(tripDistance);
+    db.collection("Trips").doc("BCITtoLangley").onSnapshot(function (doc) {
+        tripDistance = doc.get("Distance(KM)");
+        console.log(tripDistance);
 
-    // });
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "commute": "23.8",
@@ -90,10 +88,10 @@ function getLangleyDistance() {
 
 function getAbbotsfordDistance() {
 
-    // db.collection("Trips").doc("BCITtoAbbotsford").onSnapshot(function (doc) {
-    //     tripDistance = doc.get("Distance(KM)");
-    //     console.log(tripDistance);
-    // });
+    db.collection("Trips").doc("BCITtoAbbotsford").onSnapshot(function (doc) {
+        tripDistance = doc.get("Distance(KM)");
+        console.log(tripDistance);
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "commute": "39.2",
@@ -104,11 +102,11 @@ function getAbbotsfordDistance() {
 
 function getPMDistance() {
 
-    // db.collection("Trips").doc("BCITtoPortMoody").onSnapshot(function (doc) {
-    //     tripDistance = doc.get("Distance(KM)");
-    //     console.log(tripDistance);
+    db.collection("Trips").doc("BCITtoPortMoody").onSnapshot(function (doc) {
+        tripDistance = doc.get("Distance(KM)");
+        console.log(tripDistance);
 
-    // });
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "commute": "9.4",
@@ -121,11 +119,11 @@ function getPMDistance() {
 ////////////////////////////////////////////////////////////////////////////////////////
 function getRegPrice() {
 
-    // db.collection("Gas").doc("Regular").onSnapshot(function (doc) {
-    //     gasPrice = doc.get("Price(CA)");
-    //     console.log(gasPrice);
+    db.collection("Gas").doc("Regular").onSnapshot(function (doc) {
+        gasPrice = doc.get("Price(CA)");
+        console.log(gasPrice);
 
-    // });
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "gas": "1.46",
@@ -139,11 +137,11 @@ function getRegPrice() {
 
 function getMidPrice() {
 
-    // db.collection("Gas").doc("Mid-Grade").onSnapshot(function (doc) {
-    //     gasPrice = doc.get("Price(CA)");
-    //     console.log(gasPrice);
+    db.collection("Gas").doc("Mid-Grade").onSnapshot(function (doc) {
+        gasPrice = doc.get("Price(CA)");
+        console.log(gasPrice);
 
-    // });
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "gas": "5.88",
@@ -155,11 +153,11 @@ function getMidPrice() {
 
 function getPremPrice() {
 
-    // db.collection("Gas").doc("Premium").onSnapshot(function (doc) {
-    //     gasPrice = doc.get("Price(CA)");
-    //     console.log(gasPrice);
+    db.collection("Gas").doc("Premium").onSnapshot(function (doc) {
+        gasPrice = doc.get("Price(CA)");
+        console.log(gasPrice);
 
-    // });
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "gas": "6.12",
@@ -170,11 +168,11 @@ function getPremPrice() {
 }
 
 function getDieselPrice() {
-    // db.collection("Gas").doc("Diesel").onSnapshot(function (doc) {
-    //     gasPrice = doc.get("Price(CA)");
-    //     console.log(gasPrice);
+    db.collection("Gas").doc("Diesel").onSnapshot(function (doc) {
+        gasPrice = doc.get("Price(CA)");
+        console.log(gasPrice);
 
-    // });
+    });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "gas": "5.84",
@@ -228,23 +226,24 @@ function goGas() {
 ////////////////////////////////////////////////////////////////////////////
 function getCurrentProfile() {
 
-    document.getElementById("display").innerHTML = "(<h1>Car Type: " + carType + "</h1><h2>Commute: " + tripDistance + " miles</h2><h2>Fuel: " + gasPrice + "</h2>";
+    document.getElementById("display").innerHTML = "(<h1>Car Type: " + vehicleType + "</h1><h2>Commute: " + commute + " miles</h2><h2>Fuel: " + gasGrade + "</h2>";
     document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
     document.getElementById("b2").innerHTML = "";
     document.getElementById("b3").innerHTML = "";
     document.getElementById("b4").innerHTML = "";
 }
 
-// function getUserDetails() {
-//     firebase.auth().onAuthStateChanged(function (user) {
-//         db.collection("users").doc(user.uid).onSnapshot(function (doc) {
-//             carType = doc.get("car");
-//             tripDistance = doc.get("commute");
-//             gasPrice = doc.get("gasType)");
-//             console.log(gasPrice);
-//         });
-//     })
-// };
+function getUserDetails() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users").doc(user.uid).onSnapshot(function (doc) {
+            vehicleType = doc.get("car");
+            commute = doc.get("commute");
+            gasGrade = doc.get("gasType)");
+            console.log(gasPrice);
+        });
+    })
+};
+
 function newProfile() {
 
     document.getElementById("display").innerHTML = "<h1>No Profile</h1>";
