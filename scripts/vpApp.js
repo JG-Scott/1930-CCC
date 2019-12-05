@@ -1,10 +1,40 @@
-var gasPrice;
-var MPG;
-var carType;
-var tripDistance;
-var stage;
+let vehicleType = "";
+let commute = 00;
+let gasGrade = 00;
+
+////////////////////////////////////////////////////////////////////////////
+///////////////////////////////Code That Builds The Display/////////////////
+////////////////////////////////////////////////////////////////////////////
+
+function getUserDetails() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users").doc(user.uid).onSnapshot(function (doc) {
+             vehicleType = doc.get("car");
+            vehicleType = (doc.get == null) ? "None" : doc.get("car").data;
+            console.log(doc.get("car"));
+             commute = doc.get("car");
+            console.log(doc.get("commute"));
+             gasGrade = doc.get("gas");
+            console.log(doc.get("gas"));
+            document.getElementById("display").innerHTML = "<h1>Car Type: " + doc.get("car") + "</h1><h2>Commute: " + doc.get("commute") + " miles</h2><h2>Fuel: " + doc.get("gas") + "</h2>";
+            document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
+            document.getElementById("b2").innerHTML = "";
+            document.getElementById("b3").innerHTML = "";
+            document.getElementById("b4").innerHTML = "";
+        });
+    })
+};
+
+function newProfile() {
+
+    document.getElementById("display").innerHTML = "<h1>No Profile</h1>";
+    document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
+    document.getElementById("b2").innerHTML = "";
+    document.getElementById("b3").innerHTML = "";
+    document.getElementById("b4").innerHTML = "";
+}
 //////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////Get vehicle weight from the DB//////////////////////////////////////
+//////////////////////////Get vehicle type and mpg DB/////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 function getCoupMPG() {
 
@@ -12,13 +42,14 @@ function getCoupMPG() {
         MPG = doc.get("mpg");
         carType = "Coupe"
         console.log(MPG);
-        goCommute();
+
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
             "mpg": "22",
             "car": "Coupe",
         });
+        goCommute();
     });
 }
 
@@ -27,7 +58,6 @@ function getSUVMPG() {
     db.collection("Vehicles").doc("SUV").onSnapshot(function (doc) {
         MPG = doc.get("mpg");
         console.log(MPG);
-        goCommute();
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
@@ -35,7 +65,7 @@ function getSUVMPG() {
             "car": "SUV"
         });
     });
-
+    goCommute();
 }
 
 function getSedanMPG() {
@@ -43,7 +73,6 @@ function getSedanMPG() {
     db.collection("Vehicles").doc("Sedan").onSnapshot(function (doc) {
         MPG = doc.get("mpg");
         console.log(MPG);
-        goCommute();
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
@@ -51,7 +80,7 @@ function getSedanMPG() {
             "car": "Sedan"
         });
     });
-
+    goCommute();
 }
 
 
@@ -60,7 +89,7 @@ function getTruckMPG() {
     db.collection("Vehicles").doc("Truck").onSnapshot(function (doc) {
         MPG = doc.get("mpg");
         console.log(MPG);
-        goCommute();
+        
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
@@ -68,7 +97,7 @@ function getTruckMPG() {
             "car": "Truck"
         });
     });
-
+    goCommute();
 }
 /////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////Get Distances From the DB/////////////////////////////
@@ -116,9 +145,9 @@ function getPMDistance() {
     });
     goGas();
 }
-//////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////Get Gas Prices from the DB//////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////Get Gas Prices from the DB//////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 function getRegPrice() {
 
     db.collection("Gas").doc("Regular").onSnapshot(function (doc) {
@@ -132,8 +161,10 @@ function getRegPrice() {
             "gasType": "Regular"
         });
     });
-    getCurrentProfile();
+    getUserDetails();
 }
+
+
 
 function getMidPrice() {
 
@@ -148,7 +179,7 @@ function getMidPrice() {
             "gasType": "Mid-grade"
         });
     });
-    getCurrentProfile();
+    getUserDetails();
 }
 
 function getPremPrice() {
@@ -164,7 +195,7 @@ function getPremPrice() {
             "gasType": "Premium"
         });
     });
-    getCurrentProfile();
+    getUserDetails();
 }
 
 function getDieselPrice() {
@@ -179,17 +210,9 @@ function getDieselPrice() {
             "gasType": "Diesel"
         });
     });
-    getCurrentProfile();
+    getUserDetails();
 }
 
-
-////////////////////////////////////////////////////////////////////////////
-///////////////////////////////Code That Writes/////////////////////////////
-////////////////////////////////////////////////////////////////////////////
-
-// db.collection("users").doc(user.uid).update({
-//     "Car Type": document.getElementById('carTypeinfo').value,
-// });
 
 ///////////////////////////////////////////////////////////////////////////////
 /////////////////////////Code that rebuilds the buttons////////////////////////
