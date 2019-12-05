@@ -1,16 +1,12 @@
+//Store car info.
 var gasPrice;
 var MPG;
 var carType;
 var tripDistance;
 var stage;
 
-////////////////////////////////////////////////////////////////////////////
-///////////////////////////////Code That Builds The Display/////////////////
-////////////////////////////////////////////////////////////////////////////
-
-
 //////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////Get vehicle weight from the DB//////////////////////////////////////
+//                                    Determine MPG                                     //
 //////////////////////////////////////////////////////////////////////////////////////////
 function getCoupMPG() {
 
@@ -60,7 +56,6 @@ function getSedanMPG() {
 
 }
 
-
 function getTruckMPG() {
 
     db.collection("Vehicles").doc("Truck").onSnapshot(function (doc) {
@@ -76,9 +71,10 @@ function getTruckMPG() {
     });
 
 }
-/////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////Get Distances From the DB/////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                                   Determine Distance                                 //
+//////////////////////////////////////////////////////////////////////////////////////////
 function getLangleyDistance() {
 
     db.collection("Trips").doc("BCITtoLangley").onSnapshot(function (doc) {
@@ -122,8 +118,9 @@ function getPMDistance() {
     });
     goGas();
 }
+
 //////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////Get Gas Prices from the DB//////////////////////////////////////
+//                                  Determine Gas Price                                 //
 //////////////////////////////////////////////////////////////////////////////////////////
 function getRegPrice() {
 
@@ -188,18 +185,9 @@ function getDieselPrice() {
     getCurrentProfile();
 }
 
-
-////////////////////////////////////////////////////////////////////////////
-///////////////////////////////Code That Writes/////////////////////////////
-////////////////////////////////////////////////////////////////////////////
-
-// db.collection("users").doc(user.uid).update({
-//     "Car Type": document.getElementById('carTypeinfo').value,
-// });
-
-///////////////////////////////////////////////////////////////////////////////
-/////////////////////////Code that rebuilds the buttons////////////////////////
-///////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+//                                    Button Rebuild                                    //
+//////////////////////////////////////////////////////////////////////////////////////////
 function goVehicleProfile() {
 
     document.getElementById("ccPrompt").innerHTML = "<h2>Select a vehicle</h2>"
@@ -233,20 +221,32 @@ function goGas() {
     document.getElementById("start").innerHTML = "";
 }
 
-////////////////////////////////////////////////////////////////////////////
-///////////////////////////////Code That Builds The Display/////////////////
-////////////////////////////////////////////////////////////////////////////
+function newProfile() {
+    document.getElementById("ccPrompt").innerHTML = "<h1>No Profile</h1>";
+    document.getElementById("current").innerHTML = "<button type='button' id='btn1' class='btn btn-success' onclick='goVehicleProfile()'>New Profile</button>";
+    document.getElementById("start").innerHTML = "";
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                       Get profile info and calculate cost                            //
+//////////////////////////////////////////////////////////////////////////////////////////
 function getCurrentProfile() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).onSnapshot(function (doc) {
-            vehicleType = doc.get("car");
-            vehicleType = (doc.get == null) ? "None" : doc.get("car").data;
+            carType = doc.get("car");
+            carType = (doc.get == null) ? "None" : doc.get("car").data;
             console.log(doc.get("car"));
-            commute = doc.get("car");
+            tripDistance = doc.get("commute");
             console.log(doc.get("commute"));
-            gasGrade = doc.get("gas");
+            gasPrice = doc.get("gas");
             console.log(doc.get("gas"));
-            document.getElementById("ccPrompt").innerHTML = "<h2>Car Type: " + carType + "</h2><h2>Commute: " + tripDistance + " miles</h2><h2>Fuel: " + gasPrice + "</h2>";
+            console.log(gasPrice);
+            MPG = doc.get("mpg");
+            console.log(MPG);
+            document.getElementById("ccPrompt").innerHTML = "<h2>Current Profile</h2>" 
+                                                            + "<h2>Car Type: " + doc.get('car') 
+                                                            + "</h2><h2>Commute: " + doc.get('commute') 
+                                                            + " miles</h2><h2>Fuel: " + doc.get('gas') + "</h2>";
             document.getElementById("b1").innerHTML = "";
             document.getElementById("b2").innerHTML = "";
             document.getElementById("b3").innerHTML = "";
@@ -257,31 +257,26 @@ function getCurrentProfile() {
     })
 };
 
-function newProfile() {
-                document.getElementById("ccPrompt").innerHTML = "<h1>No Profile</h1>";
-                document.getElementById("current").innerHTML = "<button type='button' id='btn1' class='btn btn-success' onclick='goVehicleProfile()'>New Profile</button>";
-                document.getElementById("start").innerHTML = "";
-            }
-
 function getResult() {
 
-                //Store cost per time frame.
-                var weekCost;
-                var monthCost;
-                var yearCost;
+    //Store cost per time frame.
+    var weekCost;
+    var monthCost;
+    var yearCost;
 
-                //Determine cost per gallon.
-                var costPerG = gasPrice * 0.26;
-                //Determine cost per trip.
-                var tripCost = (tripDistance / MPG) * costPerG * 2; 
+    //Determine cost per gallon.
+    var costPerG = gasPrice * 0.26;
+    console.log(costPerG);
+    //Determine cost per trip.
+    var tripCost = (tripDistance / MPG) * costPerG * 2;
+    console.log(tripCost);
 
-                //Assume trip is made 3 times per week.
-                var weekCost = "<h2>Per Week: $" + (Math.round((tripCost * 5) * 100) / 100).toFixed(2); + "</h2>";
-                var monthCost = "<h2>Per Month: $" + (Math.round((tripCost * 15) * 100) / 100).toFixed(2); + "</h2>";
-                var yearCost = "<h2>Per Year: $" + (Math.round((tripCost * 180) * 100) / 100).toFixed(2); + "</h2>";
+    //Assume trip is made 3 times per week.
+    var weekCost = "<h2>Per Week: $" + (Math.round((tripCost * 5) * 100) / 100).toFixed(2); + "</h2>";
+    var monthCost = "<h2>Per Month: $" + (Math.round((tripCost * 15) * 100) / 100).toFixed(2); + "</h2>";
+    var yearCost = "<h2>Per Year: $" + (Math.round((tripCost * 180) * 100) / 100).toFixed(2); + "</h2>";
 
-                //Display results.
-                document.getElementById("ccPrompt").innerHTML = "<h2>Gas Cost</h2><br />" + weekCost + monthCost + yearCost;
-                document.getElementById("home").innerHTML = "<button type='button' class='btn btn-success' onclick='window.location.href='main.html'>Home</button>";
+    //Display results.
+    document.getElementById("ccPrompt").innerHTML = "<h2>Gas Cost</h2><br />" + weekCost + monthCost + yearCost;
 
-            }
+};
