@@ -27,7 +27,23 @@ Last member editing: Kyle-Herrmann.
     <!-- The firebase configuration for our project-->
     <script src="scripts/firebase_config_ccc.js"></script>
 
+    <!--BootStrap links  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 
+<script src="scripts/create_user.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/vpApp.js"></script>
+<script src="scripts/vcapp.js"></script>
 </head>
 
 <body>
@@ -37,19 +53,42 @@ Last member editing: Kyle-Herrmann.
         <img src="images/Logo.png" alt="logo">
     </header>
 
+
+    <div id="display">
+        <h2>Loading Profile...</h2>
+
+    </div>
+
     <!-- Main Buttons -->
     <div id="buttonContainer">
-        <p>This is the vehicle comparer</p>
+        <button type="button" class="btn btn-success" onclick="goNewVehicleProfile()" id="tempButton">New vehicle</button>
+        <div id="tempDisplay"></div>
+        <div id="b6">
+        </div>
+        <div id="b7">
+        </div>
+        <div id="b8">
+        </div>
+        <div id="b9">
+            </div>
+    
         <!-- Vehicle profile -->
         <input id="home" class="buttonDesign" name="home" type="button" value="home button"
             onclick="window.location.href='main.html'" />
 
     </div>
+    <script src="scripts/vpApp.js"></script>
+    <script>
+        getUserDetails();
+
+    </script>
     <script src="scripts/create_user.js"></script>
     <script src="scripts/app.js"></script>
+   
     <script>
         createUser();
     </script>
+    
 
 
 </body>
