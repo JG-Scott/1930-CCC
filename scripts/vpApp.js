@@ -1,9 +1,40 @@
-var vehicleType;
-var commute;
-var gasGrade;
+let vehicleType = "";
+let commute = 00;
+let gasGrade = 00;
 
+////////////////////////////////////////////////////////////////////////////
+///////////////////////////////Code That Builds The Display/////////////////
+////////////////////////////////////////////////////////////////////////////
+
+function getUserDetails() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users").doc(user.uid).onSnapshot(function (doc) {
+             vehicleType = doc.get("car");
+            vehicleType = (doc.get == null) ? "None" : doc.get("car").data;
+            console.log(doc.get("car"));
+             commute = doc.get("car");
+            console.log(doc.get("commute"));
+             gasGrade = doc.get("gas");
+            console.log(doc.get("gas"));
+            document.getElementById("display").innerHTML = "<h1>Car Type: " + doc.get("car") + "</h1><h2>Commute: " + doc.get("commute") + " miles</h2><h2>Fuel: " + doc.get("gas") + "</h2>";
+            document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
+            document.getElementById("b2").innerHTML = "";
+            document.getElementById("b3").innerHTML = "";
+            document.getElementById("b4").innerHTML = "";
+        });
+    })
+};
+
+function newProfile() {
+
+    document.getElementById("display").innerHTML = "<h1>No Profile</h1>";
+    document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
+    document.getElementById("b2").innerHTML = "";
+    document.getElementById("b3").innerHTML = "";
+    document.getElementById("b4").innerHTML = "";
+}
 //////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////Get vehicle weight from the DB//////////////////////////////////////
+//////////////////////////Get vehicle type and mpg DB/////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 function getCoupMPG() {
 
@@ -130,7 +161,7 @@ function getRegPrice() {
             "gasType": "Regular"
         });
     });
-    getCurrentProfile();
+    getUserDetails();
 }
 
 
@@ -148,7 +179,7 @@ function getMidPrice() {
             "gasType": "Mid-grade"
         });
     });
-    getCurrentProfile();
+    getUserDetails();
 }
 
 function getPremPrice() {
@@ -164,7 +195,7 @@ function getPremPrice() {
             "gasType": "Premium"
         });
     });
-    getCurrentProfile();
+    getUserDetails();
 }
 
 function getDieselPrice() {
@@ -179,17 +210,9 @@ function getDieselPrice() {
             "gasType": "Diesel"
         });
     });
-    getCurrentProfile();
+    getUserDetails();
 }
 
-
-////////////////////////////////////////////////////////////////////////////
-///////////////////////////////Code That Writes/////////////////////////////
-////////////////////////////////////////////////////////////////////////////
-
-// db.collection("users").doc(user.uid).update({
-//     "Car Type": document.getElementById('carTypeinfo').value,
-// });
 
 ///////////////////////////////////////////////////////////////////////////////
 /////////////////////////Code that rebuilds the buttons////////////////////////
@@ -221,34 +244,3 @@ function goGas() {
     document.getElementById("b4").innerHTML = '<button type="button" class="btn btn-success" onclick="getDieselPrice()">Diesel</button>'
 }
 
-////////////////////////////////////////////////////////////////////////////
-///////////////////////////////Code That Builds The Display/////////////////
-////////////////////////////////////////////////////////////////////////////
-function getCurrentProfile() {
-
-    document.getElementById("display").innerHTML = "(<h1>Car Type: " + vehicleType + "</h1><h2>Commute: " + commute + " miles</h2><h2>Fuel: " + gasGrade + "</h2>";
-    document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
-    document.getElementById("b2").innerHTML = "";
-    document.getElementById("b3").innerHTML = "";
-    document.getElementById("b4").innerHTML = "";
-}
-
-function getUserDetails() {
-    firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("users").doc(user.uid).onSnapshot(function (doc) {
-            vehicleType = doc.get("car");
-            commute = doc.get("commute");
-            gasGrade = doc.get("gasType)");
-            console.log(gasPrice);
-        });
-    })
-};
-
-function newProfile() {
-
-    document.getElementById("display").innerHTML = "<h1>No Profile</h1>";
-    document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
-    document.getElementById("b2").innerHTML = "";
-    document.getElementById("b3").innerHTML = "";
-    document.getElementById("b4").innerHTML = "";
-}

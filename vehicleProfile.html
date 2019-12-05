@@ -7,7 +7,7 @@ Main CarCostCalculator Page
 
 <head>
 
-    <title>Quick Trip Calculator</title>
+    <title>Vehicle Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <link rel="stylesheet" type="text/css" href="style/style.css">
@@ -25,7 +25,7 @@ Main CarCostCalculator Page
 
     <!-- The firebase configuration for our project-->
     <script src="scripts/firebase_config_ccc.js"></script>
-    <script src="scripts/vpApp.js"></script>
+    
 
     <!--BootStrap links  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -51,12 +51,11 @@ Main CarCostCalculator Page
 
 
     <div id="display">
-        <h1>Car Type:</h1>
-        <h2>Commute:</h2>
-        <h2>Gas Grade:</h2>
+        <h2>Loading Profile...</h2>
+
     </div>
 
-    <div id="quickTripCalc">
+    <div id="vehicleProfile">
         <div id="b1">
             <button type="button" class="btn btn-success" onclick="goVehicleProfile()">NEW</button>
         </div>
@@ -79,9 +78,10 @@ Main CarCostCalculator Page
         <!-- Home Button -->
         <button type="button" class="btn btn-success" onclick="window.location.href='main.html'">Home</button>
     </nav>
-
+    <script src="scripts/vpApp.js"></script>
     <script>
-        newProfile();
+        getUserDetails();
+
     </script>
 
 

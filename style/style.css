@@ -1,15 +1,16 @@
 header {
     text-align: center;
     font-family: 'roboto';
-    text-shadow: 2px 2px 3px #ffffff;         
-    font-size: 3em;   
+    text-shadow: 2px 2px 3px #ffffff;
+    font-size: 3em;
 }
+
 header img {
     padding: 4%;
     width: 100%;
 }
 
-body{
+body {
     text-align: center;
     margin: 0px;
     padding: 0px;
@@ -24,7 +25,8 @@ body{
 nav {
     padding: 10%;
 }
-nav button{
+
+nav button {
     width: 100%;
     text-align: center;
     padding: 12pt;
@@ -37,16 +39,25 @@ nav button{
 }
 
 
-#buttonContainer *{
+#buttonContainer * {
     width: 100%;
     text-align: center;
     padding: 12pt;
     font-size: 75pt;
 }
 
-#quickTripCalc *{
-        width: 100%;
-        text-align: center;
-        padding: 1pt;
-        font-size: 24pt;
-    }
+#quickTripCalc * {
+    width: 100%;
+    text-align: center;
+    padding: 1pt;
+    font-size: 24pt;
+}
+
+#vehicleProfile *{
+
+    width: 100%;
+    text-align: center;
+    padding: 1pt;
+    font-size: 24pt;
+
+}
