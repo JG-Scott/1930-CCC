@@ -11,6 +11,7 @@ Last member editing: Kyle-Herrmann.
     <title>Car Cost Calculator</title>
     <meta charset="en" />
     <link rel="stylesheet" type="text/css" href="style/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
@@ -25,6 +26,7 @@ Last member editing: Kyle-Herrmann.
 
     <!-- The firebase configuration for our project-->
     <script src="scripts/firebase_config_ccc.js"></script>
+    <script src="scripts/ccApp.js"></script>
 
     <!--BootStrap links  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -38,7 +40,7 @@ Last member editing: Kyle-Herrmann.
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
-
+    </style>
 </head>
 
 <body>
@@ -48,47 +50,37 @@ Last member editing: Kyle-Herrmann.
         <img src="images/Logo.png" alt="logo">
     </header>
 
-    <!-- Menu -->
-    <div id='buttonContainer'>
-        <!-- Vehicle type -->
-        <div>
-            <button type="button" class="btn btn-success" onclick="window.location.href='VehicleProfileNew.html'">
-                Vehicle type</button>
+    <!-- Display for current profile -->
+    <div id="ccPrompt">
+    </div>
+
+    <!-- New Vehicle type -->
+    <div id="ccButtons">
+        <!-- Option buttons -->
+        <div id="b1">
         </div>
-        <!-- Vehicle details -->
-        <div>
-            <button type="button" class="btn btn-success" onclick="window.location.href='VehicleProfiles.html'">
-                Details</button>
+        <div id="b2">
         </div>
-        <!-- Common trips -->
-        <div>
-            <button type="button" class="btn btn-success" onclick="window.location.href='tripProfile.html'">
-                Common trips</button>
+        <div id="b3">
         </div>
-        <!-- Next -->
-        <div>
-            <button type="button" class="btn btn-success" onclick="window.location.href='VehicleProfiles.html'">
-                Next</button>
+        <div id="b4">
+        </div>
+        <div id="next">
+        </div>
+        <div id="start">
+            <button type="button" class="btn btn-success" onclick="newProfile()">New Profile</button>
+        </div>
+        <!-- Current vehicle profile -->
+        <div id="current">
+            <button type="button" class="btn btn-success" onclick="getCurrentProfile()">Current Profile</button>
+        </div>
+        <!-- Home Button -->
+        <div id="home">
+            <button type="button" class="btn btn-success" onclick="window.location.href='main.html'">Home</button>
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-    <script src="scripts/create_user.js"></script>
-    <script src="scripts/app.js"></script>
-    <script>
-        createUser();
-
-    </script>
-
 </body>
-
 
 
 </html>
