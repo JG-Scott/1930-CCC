@@ -8,7 +8,7 @@ let gasGrade = 00;
 
 function getUserDetails() {
     firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("users").doc(user.uid).onSnapshot(function (doc) {
+        db.collection("user").doc(user.uid).onSnapshot(function (doc) {
              vehicleType = doc.get("car");
             vehicleType = (doc.get == null) ? "None" : doc.get("car").data;
             console.log(doc.get("car"));
