@@ -8,7 +8,7 @@ var stage;
 function goVehicle() {
 
     document.getElementById("display").innerHTML = "Select a vehicle:";
-    document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="getCoupWeight()">Coup</button>';
+    document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="getCoupWeight()">Coupe</button>';
     document.getElementById("b2").innerHTML = '<button type="button" class="btn btn-success" onclick="getSUVWeight()">SUV</button>';
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="getSedanWeight()">Sedan</button>';
     document.getElementById("b4").innerHTML = '<button type="button" class="btn btn-success" onclick="getTruckWeight()">Truck</button>';
