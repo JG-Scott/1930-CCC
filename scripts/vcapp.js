@@ -1,4 +1,10 @@
+//variable to hold the changing 
 var time = "week";
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////User Details///////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 var gasValue = 0;
 var gasmult = 7;
 function getUserDetails() {
@@ -11,7 +17,11 @@ function getUserDetails() {
             console.log(doc.get("commute"));
              var gasGrade = doc.get("gas");
             console.log(doc.get("gas"));
-            document.getElementById("display").innerHTML = "<p>Car Type: " + doc.get("car") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: $" + (doc.get("gas") * (3.875)).toFixed(2) + "</p><p>Gas Total: $" + (doc.get("commute") / doc.get("mpg") * (doc.get("gas") * 3.875)).toFixed(2) + "</p>";
+            document.getElementById("display").innerHTML = "<p>Car Type: " 
+                + doc.get("car") + "</p><p>Commute: " + doc.get("commute") 
+                + " miles</p><p>Fuel: $" + (doc.get("gas") * (3.875)).toFixed(2) 
+                + "</p><p>Gas Total: $" + (doc.get("commute") / doc.get("mpg") 
+                    * (doc.get("gas") * 3.875)).toFixed(2) + "</p>";
 
  
         });

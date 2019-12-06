@@ -8,24 +8,25 @@ Last member editing: Johnny Scott.
 
 <head>
     <style>
+        /*User information*/
         #display {
             font-size: 40pt;
             text-align: center;
 
         }
-
+        /*Temporary information**/
         #tempDisplay {
             font-size: 40pt;
             text-align: center;
 
         }
-
+        /*info css**/
         #info {
             font-size: 40pt;
             text-align: center;
 
         }
-
+        /*homebutton css**/
         #logout {
             position: absolute;
             top: 1575px;
@@ -33,6 +34,7 @@ Last member editing: Johnny Scott.
             width: 950px;
 
         }
+        /*time changer css**/
         #logout2 {
             position: absolute;
             top: 1400px;
@@ -95,10 +97,12 @@ Last member editing: Johnny Scott.
     <header>
         <img src="images/Logo.png" alt="logo">
     </header>
+     <!-- home and time change buttons -->
     <button id="logout" type="button" class="btn btn-success"
     onclick="window.location.href='main.html'">Home</button>
     <div id="changeable"><button id="logout2" input="button" class="btn btn-success"
             onclick="changeTimeYear()">See Yearly</button></div>
+     <!-- User and temp info and titles -->
     <div id="info">
         <h1>Loading....</h1>
     </div>
