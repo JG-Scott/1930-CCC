@@ -10,6 +10,7 @@ header {
 
 header img {
     padding: 4%;
+    padding-top: 14%;
     width: 100%;
 }
 
@@ -48,7 +49,10 @@ nav button {
     padding: 12pt;
     font-size: 75pt;
 }
-
+#topMain {
+    margin-top: 150px;
+    padding-top: 20pt;
+}
 #quickTripCalc *{
     width: 100%;
     height: 100%;
