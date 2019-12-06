@@ -1,3 +1,7 @@
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////QUICK TRIP JAVASCRIPT///////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
 var gasPrice;
 var carWeight;
 var tripDistance;
@@ -5,6 +9,8 @@ var stage;
 ///////////////////////////////////////////////////////////////////////////////
 /////////////////////////Code that rebuilds the buttons////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
+//Called first and gives the list of vehicle types
 function goVehicle() {
 
     document.getElementById("display").innerHTML = "Select a vehicle:";
@@ -13,6 +19,7 @@ function goVehicle() {
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="getSedanWeight()">Sedan</button>';
     document.getElementById("b4").innerHTML = '<button type="button" class="btn btn-success" onclick="getTruckWeight()">Truck</button>';
 }
+//Called second, gives a list of trips
 function goTrip() {
 
     document.getElementById("display").innerHTML = "Select a Trip:";
@@ -21,6 +28,7 @@ function goTrip() {
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="getMCDistance()">Mexico City</button>';
     document.getElementById("b4").innerHTML = "";
 }
+//Called Second, gives a list of gas types
 function goGas() {
 
     document.getElementById("display").innerHTML = "Select gas grade:";
@@ -29,13 +37,14 @@ function goGas() {
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="getPremPrice()">Premium</button>';
     document.getElementById("b4").innerHTML = '<button type="button" class="btn btn-success" onclick="getDieselPrice()">Diesel</button>'
 }
+//Called last to build the result and give them an option to build a new trip
 function goResult() {
     db.collection("empty").doc("empty").onSnapshot(function (doc) {  
     document.getElementById("display").innerHTML = doc.get("empty") + "Your trip will cost:  $" + ((tripDistance / carWeight) * (gasPrice * 3.875)).toFixed(2);
     document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="goVehicle()">New Trip</button>';
     document.getElementById("b2").innerHTML = '';
     document.getElementById("b3").innerHTML = '';
-    document.getElementById("b4").innerHTML = ''
+    document.getElementById("b4").innerHTML = '';
 
 });
    
