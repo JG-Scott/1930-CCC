@@ -13,6 +13,7 @@ Last member editing: Johnny Scott.
             text-align: center;
 
         }
+
         #tempDisplay {
             font-size: 40pt;
             text-align: center;
@@ -24,9 +25,7 @@ Last member editing: Johnny Scott.
             text-align: center;
 
         }
-        
-        
-        </style>
+    </style>
 
     <title>Car Cost Calculator</title>
     <meta charset="en" />
@@ -60,19 +59,16 @@ Last member editing: Johnny Scott.
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
 
-<script src="scripts/create_user.js"></script>
-<script src="scripts/app.js"></script>
-<script src="scripts/vpApp.js"></script>
-<script src="scripts/vcapp.js"></script>
-<script>
+    <script src="scripts/create_user.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/vpApp.js"></script>
+    <script src="scripts/vcapp.js"></script>
+    <script>
         getInfo();
         getTempDetails();
         getUserDetails();
+    </script>
 
-          
-          
-           </script>
-            
 </head>
 
 <body>
@@ -81,29 +77,41 @@ Last member editing: Johnny Scott.
     <header>
         <img src="images/Logo.png" alt="logo">
     </header>
-    <div id="changeable"><button input="button" class="btn btn-success"  onclick="changeTimeYear()">Year</button></div>
-    <div id="info"><h1>Loading....</h1></div>
-    <div id="uVehicle"><h1>User Vehicle</h1></div>
-    <div id="display"><h1>Loading...</h1></div>
-    <div id="uVehicle"><h1>New Vehicle</h1></div>
-    <div id="tempDisplay"><h1>Loading....</h1><div>
-
-        
-    <!-- Main Buttons -->
-    <div id="buttonContainer">
-
-    
-
-
-
+    <div id="changeable"><button id="logout" input="button" class="btn btn-success"
+            onclick="changeTimeYear()">Year</button></div>
+    <div id="info">
+        <h1>Loading....</h1>
     </div>
+    <div id="uVehicle">
+        <h1>User Vehicle</h1>
+    </div>
+    <div id="display">
+        <h1>Loading...</h1>
+    </div>
+    <div id="uVehicle">
+        <h1>New Vehicle</h1>
+    </div>
+    <div id="tempDisplay">
+        <h1>Loading....</h1>
+        <div>
 
 
-    <nav>
-            <!-- Home Button -->
-            <button type="button" class="btn btn-success" onclick="window.location.href='main.html'">Home</button>
-        </nav>
-        
+            <!-- Main Buttons -->
+            <div id="buttonContainer">
+
+
+
+
+
+            </div>
+
+
+            <nav>
+                <!-- Home Button -->
+                <button id="logout" type="button" class="btn btn-success"
+                    onclick="window.location.href='main.html'">Home</button>
+            </nav>
+
 
 
 </body>

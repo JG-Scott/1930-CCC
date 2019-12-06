@@ -269,7 +269,7 @@ function goNewGas() {
 
     document.getElementById("tempDisplay").innerHTML = "<h2>Select gas grade:</h2>"
     document.getElementById("b6").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempRegPrice()">Regular</button>';
-    document.getElementById("b7").innerHTML = '<button itype="button" class="btn btn-success" onclick="getTempMidPrice()">Mid-Gade</button>';
+    document.getElementById("b7").innerHTML = '<button itype="button" class="btn btn-success" onclick="getTempMidPrice()">Mid-Grade</button>';
     document.getElementById("b8").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempPremPrice()">Premium</button>';
     document.getElementById("b9").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempDieselPrice()">Diesel</button>';
 }
@@ -329,7 +329,7 @@ function getInfo() {
     function changeTimeYear() {
         time = "year";
         
-        document.getElementById("changeable").innerHTML = '<button type="button" class="btn btn-success" onclick="changeTimeMonth()" id="changeable">month</button>';
+        document.getElementById("changeable").innerHTML = '<button id="logout" type="button" class="btn btn-success" onclick="changeTimeMonth()" id="changeable">month</button>';
         gasmult = gasmult * (253 / 7);
         getInfo();
 }
@@ -337,7 +337,7 @@ function getInfo() {
 function changeTimeMonth() {
     time = "month";
     getInfo();
-    document.getElementById("changeable").innerHTML = '<button type="button" class="btn btn-success" onclick="changeTimeWeek()" id="changeable">week</button>';
+    document.getElementById("changeable").innerHTML = '<button id="logout" type="button" class="btn btn-success" onclick="changeTimeWeek()" id="changeable">week</button>';
     gasmult = gasmult * (20 / 253);
 
 }
@@ -347,7 +347,7 @@ function changeTimeWeek() {
     gasmult = gasmult * (7 / 20);
     getInfo();
 
-    document.getElementById("changeable").innerHTML = '<button type="button" class="btn btn-success" onclick="changeTimeYear()" id="changeable">year</button>';
+    document.getElementById("changeable").innerHTML = '<button id="logout" type="button" class="btn btn-success" onclick="changeTimeYear()" id="changeable">year</button>';
 
 
 }
