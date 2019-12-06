@@ -9,7 +9,7 @@ function getUserDetails() {
             console.log(doc.get("commute"));
              var gasGrade = doc.get("gas");
             console.log(doc.get("gas"));
-            document.getElementById("display").innerHTML = "<p>Car Type: " + doc.get("car") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + doc.get("gas") + "</>";
+            document.getElementById("display").innerHTML = "<p>Car Type: " + doc.get("car") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + doc.get("gas") + "</p><p>Gas Total: " + (doc.get("commute") / doc.get("mpg") * doc.get("gas")).toFixed(2) + "</p>";
 
         });
 
@@ -41,7 +41,8 @@ function getTempDetails() {
             console.log(doc.get("Tempcommute"));
              var tempGasGrade = doc.get("Tempgas");
             console.log(doc.get("Tempgas"));
-            document.getElementById("tempDisplay").innerHTML = "<p>Car Type: " + doc.get("Tempcar") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + doc.get("Tempgas") + "</p>";
+            
+            document.getElementById("tempDisplay").innerHTML = "<p>Car Type: " + doc.get("Tempcar") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + doc.get("Tempgas") + "</p><p>Gas Total: " + (doc.get("Tempcommute") / doc.get("Tempmpg") * doc.get("Tempgas")).toFixed(2) + "</p>";
             document.getElementById("b6").innerHTML = "";
             document.getElementById("b7").innerHTML = "";
             document.getElementById("b8").innerHTML = "";
@@ -298,10 +299,20 @@ function goToStats() {
 };
 
 function getInfo() {
+ 
         firebase.auth().onAuthStateChanged(function (user) {
+            
             db.collection("users").doc(user.uid).onSnapshot(function (doc) {
-                document.getElementById("info").innerHTML = "<p>By switching from your " + doc.get("car") + " to a " + doc.get("Tempcar") + ", you will save a total of  __________.</p>";
-    
+
+                if (doc.get("Tempgas") < doc.get("gas")) {
+                    var gasValue = (((doc.get("commute") / doc.get("mpg") * doc.get("gas")).toFixed(2) - (doc.get("Tempcommute") / doc.get("Tempmpg") * doc.get("Tempgas")))).toFixed(2);
+                } else {
+                    var gasValue = (((doc.get("Tempcommute") / doc.get("Tempmpg") * doc.get("Tempgas")).toFixed(2) - (doc.get("commute") / doc.get("mpg") * doc.get("gas")))).toFixed(2);
+            
+            
+                }
+                document.getElementById("info").innerHTML = "<p>By switching from your " + doc.get("car") + " to a " + doc.get("Tempcar") + ", you will save a total of $" + (gasValue * (7)).toFixed(2) + " over a one week period</p>";
+     
             });
     
         })
