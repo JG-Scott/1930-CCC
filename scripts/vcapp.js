@@ -8,7 +8,7 @@ function getUserDetails() {
             console.log(doc.get("commute"));
              gasGrade = doc.get("gas");
             console.log(doc.get("gas"));
-            document.getElementById("display").innerHTML = "<h1>Car Type: " + doc.get("car") + "</h1><h2>Commute: " + doc.get("commute") + " miles</h2><h2>Fuel: " + doc.get("gas") + "</h2>";
+            document.getElementById("display").innerHTML = "<p>Car Type: " + doc.get("car") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + doc.get("gas") + "</>";
 
         });
 
@@ -40,12 +40,12 @@ function getTempDetails() {
             console.log(doc.get("Tempcommute"));
              gasGrade = doc.get("Tempgas");
             console.log(doc.get("Tempgas"));
-            document.getElementById("tempDisplay").innerHTML = "<h1>Car Type: " + doc.get("Tempcar") + "</h1><h2>Commute: " + doc.get("Tempcommute") + " miles</h2><h2>Fuel: " + doc.get("Tempgas") + "</h2>";
+            document.getElementById("tempDisplay").innerHTML = "<p>Car Type: " + doc.get("Tempcar") + "</p><p>Commute: " + doc.get("Tempcommute") + " miles</p><p>Fuel: " + doc.get("Tempgas") + "</p>";
             document.getElementById("b6").innerHTML = "";
             document.getElementById("b7").innerHTML = "";
             document.getElementById("b8").innerHTML = "";
             document.getElementById("b9").innerHTML = "";
-            document.getElementById("b10").innerHTML = "";
+            document.getElementById("b10").innerHTML = '<button type="button" class="btn btn-success" onclick="goToStats()">Statistics</button>';
         });
     })
 };
@@ -267,7 +267,7 @@ function goNewGas() {
     document.getElementById("b6").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempRegPrice()">Regular</button>';
     document.getElementById("b7").innerHTML = '<button itype="button" class="btn btn-success" onclick="getTempMidPrice()">Mid-Gade</button>';
     document.getElementById("b8").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempPremPrice()">Premium</button>';
-    document.getElementById("b9").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempDieselPrice()">Diesel</button>'
+    document.getElementById("b9").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempDieselPrice()">Diesel</button>';
 }
 
 
@@ -321,6 +321,13 @@ function getTempResult() {
 
     //Display results.
     document.getElementById("ccPrompt").innerHTML = "<h2>Gas Cost</h2><br />" + weekCost + monthCost + yearCost;
+
+};
+
+function goToStats() {
+
+    window.location.href = "Stats.html";
+
 
 };
 
