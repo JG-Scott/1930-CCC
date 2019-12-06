@@ -9,7 +9,7 @@ function getUserDetails() {
             console.log(doc.get("commute"));
              var gasGrade = doc.get("gas");
             console.log(doc.get("gas"));
-            document.getElementById("display").innerHTML = "<p>Car Type: " + doc.get("car") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + doc.get("gas") + "</p><p>Gas Total: " + (doc.get("commute") / doc.get("mpg") * doc.get("gas")).toFixed(2) + "</p>";
+            document.getElementById("display").innerHTML = "<p>Car Type: " + doc.get("car") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + (doc.get("gas") * (3.875)).toFixed(2) + "</p><p>Gas Total: " + (doc.get("commute") / doc.get("mpg") * (doc.get("gas") * 3.875)).toFixed(2) + "</p>";
 
         });
 
@@ -303,15 +303,17 @@ function getInfo() {
         firebase.auth().onAuthStateChanged(function (user) {
             
             db.collection("users").doc(user.uid).onSnapshot(function (doc) {
-
-                if (doc.get("Tempgas") < doc.get("gas")) {
-                    var gasValue = (((doc.get("commute") / doc.get("mpg") * doc.get("gas")).toFixed(2) - (doc.get("Tempcommute") / doc.get("Tempmpg") * doc.get("Tempgas")))).toFixed(2);
-                } else {
-                    var gasValue = (((doc.get("Tempcommute") / doc.get("Tempmpg") * doc.get("Tempgas")).toFixed(2) - (doc.get("commute") / doc.get("mpg") * doc.get("gas")))).toFixed(2);
-            
+                var normGas = (doc.get("commute") / doc.get("mpg") * (doc.get("gas")* (3.875)));
+                var tempGas = (doc.get("Tempcommute") / doc.get("Tempmpg") * doc.get("Tempgas"));
+                if (tempGas < normGas) {
+                    var gasValue = ((normGas - tempGas)).toFixed(2);
+                    var changer = "lose";
+                } else if (tempGas > normGas) {
+                    var gasValue = ((tempGas - normGas)).toFixed(2);
+                    var changer = "save";
             
                 }
-                document.getElementById("info").innerHTML = "<p>By switching from your " + doc.get("car") + " to a " + doc.get("Tempcar") + ", you will save a total of $" + (gasValue * (7)).toFixed(2) + " over a one week period</p>";
+                document.getElementById("info").innerHTML = "<p>By switching from your " + doc.get("car") + " to a " + doc.get("Tempcar") + ", you will " + changer + " a total of $" + (gasValue * (7)).toFixed(2) + " over a one week period</p>";
      
             });
     
