@@ -85,3 +85,16 @@ nav button {
 #tempDisplay {
     line-height: 24pt;
 }
+
+#logout2 {
+    
+    font-size: 60pt;
+}
+
+#greeting {
+    position: absolute;
+    top: 300px;
+    font-size: 200pt;
+
+
+}

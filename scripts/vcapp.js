@@ -11,16 +11,13 @@ function getUserDetails() {
             console.log(doc.get("commute"));
              var gasGrade = doc.get("gas");
             console.log(doc.get("gas"));
-            document.getElementById("display").innerHTML = "<p>Car Type: " + doc.get("car") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + (doc.get("gas") * (3.875)).toFixed(2) + "</p><p>Gas Total: " + (doc.get("commute") / doc.get("mpg") * (doc.get("gas") * 3.875)).toFixed(2) + "</p>";
+            document.getElementById("display").innerHTML = "<p>Car Type: " + doc.get("car") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: $" + (doc.get("gas") * (3.875)).toFixed(2) + "</p><p>Gas Total: $" + (doc.get("commute") / doc.get("mpg") * (doc.get("gas") * 3.875)).toFixed(2) + "</p>";
 
+ 
         });
 
     })
     
-    document.getElementById("b1").innerHTML = "";
-    document.getElementById("b2").innerHTML = "";
-    document.getElementById("b3").innerHTML = "";
-    document.getElementById("b4").innerHTML = "";
 
 };
 
@@ -44,12 +41,9 @@ function getTempDetails() {
              var tempGasGrade = doc.get("Tempgas");
             console.log(doc.get("Tempgas"));
             
-            document.getElementById("tempDisplay").innerHTML = "<p>Car Type: " + doc.get("Tempcar") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + doc.get("Tempgas") + "</p><p>Gas Total: " + (doc.get("Tempcommute") / doc.get("Tempmpg") * doc.get("Tempgas")).toFixed(2) + "</p>";
-            document.getElementById("b6").innerHTML = "";
-            document.getElementById("b7").innerHTML = "";
-            document.getElementById("b8").innerHTML = "";
-            document.getElementById("b9").innerHTML = "";
-            document.getElementById("b10").innerHTML = '<button type="button" class="btn btn-success" onclick="goToStats()">Statistics</button>';
+            document.getElementById("tempDisplay").innerHTML = "<p>Car Type: " + doc.get("Tempcar") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: $" + doc.get("Tempgas") + "</p><p>Gas Total: $" + (doc.get("Tempcommute") / doc.get("Tempmpg") * doc.get("Tempgas")).toFixed(2) + "</p>";
+
+           
         });
     })
 };
@@ -329,7 +323,7 @@ function getInfo() {
     function changeTimeYear() {
         time = "year";
         
-        document.getElementById("changeable").innerHTML = '<button id="logout" type="button" class="btn btn-success" onclick="changeTimeMonth()" id="changeable">month</button>';
+        document.getElementById("changeable").innerHTML = '<button id="logout2" type="button" class="btn btn-success" onclick="changeTimeMonth()" id="changeable">month</button>';
         gasmult = gasmult * (253 / 7);
         getInfo();
 }
@@ -337,7 +331,7 @@ function getInfo() {
 function changeTimeMonth() {
     time = "month";
     getInfo();
-    document.getElementById("changeable").innerHTML = '<button id="logout" type="button" class="btn btn-success" onclick="changeTimeWeek()" id="changeable">week</button>';
+    document.getElementById("changeable").innerHTML = '<button id="logout2" type="button" class="btn btn-success" onclick="changeTimeWeek()" id="changeable">week</button>';
     gasmult = gasmult * (20 / 253);
 
 }
@@ -347,7 +341,7 @@ function changeTimeWeek() {
     gasmult = gasmult * (7 / 20);
     getInfo();
 
-    document.getElementById("changeable").innerHTML = '<button id="logout" type="button" class="btn btn-success" onclick="changeTimeYear()" id="changeable">year</button>';
+    document.getElementById("changeable").innerHTML = '<button id="logout2" type="button" class="btn btn-success" onclick="changeTimeYear()" id="changeable">year</button>';
 
 
 }

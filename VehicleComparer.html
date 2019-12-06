@@ -22,6 +22,13 @@ Last member editing: Johnny Scott.
             font-size: 10pt;
             text-align: center;
         }
+        #logout {
+            position: absolute;
+            top: 1585px;
+            left: 5px;
+            width: 100px;
+
+        }
 
         </style>
 
@@ -62,7 +69,7 @@ Last member editing: Johnny Scott.
 
 <script src="scripts/vcapp.js"></script>
 <script>
-        getUserDetails();
+    
 
     </script>
 </head>
@@ -93,10 +100,8 @@ Last member editing: Johnny Scott.
 
         </div>
     
-        <!-- Vehicle profile -->
-        <input id="home" class="buttonDesign" name="home" type="button" value="home button"
-            onclick="window.location.href='main.html'" />
-
+        <button id="logout" type="button" class="btn btn-success"
+        onclick="window.location.href='main.html'">Home</button>
     </div>
 
     <script src="scripts/create_user.js"></script>
