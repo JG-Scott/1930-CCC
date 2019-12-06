@@ -1,4 +1,6 @@
-
+var time = "week";
+var gasValue = 0;
+var gasmult = 7;
 function getUserDetails() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).onSnapshot(function (doc) {
@@ -303,7 +305,7 @@ function getInfo() {
         firebase.auth().onAuthStateChanged(function (user) {
             
             db.collection("users").doc(user.uid).onSnapshot(function (doc) {
-                var normGas = (doc.get("commute") / doc.get("mpg") * (doc.get("gas")* (3.875)));
+                var normGas = (doc.get("commute") / doc.get("mpg") * (doc.get("gas") * (3.875)));
                 var tempGas = (doc.get("Tempcommute") / doc.get("Tempmpg") * doc.get("Tempgas"));
                 if (tempGas < normGas) {
                     var gasValue = ((normGas - tempGas)).toFixed(2);
@@ -313,10 +315,39 @@ function getInfo() {
                     var changer = "save";
             
                 }
-                document.getElementById("info").innerHTML = "<p>By switching from your " + doc.get("car") + " to a " + doc.get("Tempcar") + ", you will " + changer + " a total of $" + (gasValue * (7)).toFixed(2) + " over a one week period</p>";
+
+                document.getElementById("info").innerHTML = "<p>By switching from your " + doc.get("car") + " to a " + doc.get("Tempcar") + ", you will " + changer + " a total of $" + ((gasValue) * gasmult).toFixed(2) + " over a one " + time + " period</p>";
      
             });
     
         })
     };
+
+
+
+
+    function changeTimeYear() {
+        time = "year";
         
+        document.getElementById("changeable").innerHTML = '<button type="button" class="btn btn-success" onclick="changeTimeMonth()" id="changeable">month</button>';
+        gasmult = gasmult * (253 / 7);
+        getInfo();
+}
+
+function changeTimeMonth() {
+    time = "month";
+    getInfo();
+    document.getElementById("changeable").innerHTML = '<button type="button" class="btn btn-success" onclick="changeTimeWeek()" id="changeable">week</button>';
+    gasmult = gasmult * (20 / 253);
+
+}
+
+function changeTimeWeek() {
+    time = "week";
+    gasmult = gasmult * (7 / 20);
+    getInfo();
+
+    document.getElementById("changeable").innerHTML = '<button type="button" class="btn btn-success" onclick="changeTimeYear()" id="changeable">year</button>';
+
+
+}
