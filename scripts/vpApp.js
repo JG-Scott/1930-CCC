@@ -3,20 +3,24 @@
 ////////////////////////////////////////////////////////////////////////////
 
 function getUserDetails() {
+    document.getElementById("display").innerHTML = "<h2>Loading...</h2>"
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).onSnapshot(function (doc) {
             document.getElementById("display").innerHTML = "<h1>Car Type: " + doc.get("car") + "</h1><h2>Commute: " + doc.get("commute") + " miles</h2><h2>Fuel: " + doc.get("gasType") + "</h2>";
             console.log('user details');
 
         });
-    })
-    document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
+    });
+    document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="goHome()">Home</button>';
     console.log('new');
     document.getElementById("b2").innerHTML = "";
     document.getElementById("b3").innerHTML = "";
     document.getElementById("b4").innerHTML = "";
 };
 
+function goHome(){
+    window.location.href = 'VehicleComparer.html';
+}
 ///////////////////////////////////////////////////////////////////////////////
 /////////////////////////Code that rebuilds the buttons////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
