@@ -40,7 +40,7 @@ function getTempDetails() {
             console.log(doc.get("Tempcommute"));
              gasGrade = doc.get("Tempgas");
             console.log(doc.get("Tempgas"));
-            document.getElementById("tempDisplay").innerHTML = "<p>Car Type: " + doc.get("Tempcar") + "</p><p>Commute: " + doc.get("Tempcommute") + " miles</p><p>Fuel: " + doc.get("Tempgas") + "</p>";
+            document.getElementById("tempDisplay").innerHTML = "<p>Car Type: " + doc.get("Tempcar") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + doc.get("Tempgas") + "</p>";
             document.getElementById("b6").innerHTML = "";
             document.getElementById("b7").innerHTML = "";
             document.getElementById("b8").innerHTML = "";
@@ -68,7 +68,7 @@ function getTempRegPrice() {
             "TempgasType": "Regular"
         });
     });
-    getTempDetails();
+    getStatsButt();
 }
 
 function getTempMidPrice() {
@@ -84,7 +84,7 @@ function getTempMidPrice() {
             "TempgasType": "Mid-grade"
         });
     });
-    getTempDetails();
+    getStatsButt();
 }
 
 function getTempPremPrice() {
@@ -100,7 +100,7 @@ function getTempPremPrice() {
             "TempgasType": "Premium"
         });
     });
-    getTempDetails();
+    getStatsButt();
 }
 
 function getTempDieselPrice() {
@@ -115,7 +115,7 @@ function getTempDieselPrice() {
             "TempgasType": "Diesel"
         });
     });
-    getTempDetails();
+    getStatsButt();
 }
 
 
@@ -135,7 +135,7 @@ function getTempSUVMPG() {
             "Tempcar": "SUV"
         });
     });
-    goNewCommute();
+    goNewGas();
 }
 
 function getTempCoupMPG() {
@@ -151,7 +151,7 @@ function getTempCoupMPG() {
             "Tempmpg": "22",
             "Tempcar": "Coupe",
         });
-        goNewCommute();
+        goNewGas();
     });
 }
 
@@ -167,7 +167,7 @@ function getTempSedanMPG() {
             "Tempcar": "Sedan"
         });
     });
-    goNewCommute();
+    goNewGas();
 }
 
 function getTempTruckMPG() {
@@ -183,7 +183,7 @@ function getTempTruckMPG() {
             "Tempcar": "Truck"
         });
     });
-    goNewCommute();
+    goNewGas();
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////Temporary Distances////////////////////////////////////////////
@@ -323,6 +323,16 @@ function getTempResult() {
     document.getElementById("ccPrompt").innerHTML = "<h2>Gas Cost</h2><br />" + weekCost + monthCost + yearCost;
 
 };
+
+function getStatsButt() {
+    document.getElementById("b10").innerHTML = '<button type="button" class="btn btn-success" onclick="goToStats()">Statistics</button>';
+    document.getElementById("tempDisplay").innerHTML = "";
+    document.getElementById("b6").innerHTML = "";
+    document.getElementById("b7").innerHTML = "";
+    document.getElementById("b8").innerHTML = "";
+    document.getElementById("b9").innerHTML = "";
+    document.getElementById("newVehicle").innerHTML = "";
+}
 
 function goToStats() {
 
