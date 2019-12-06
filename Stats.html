@@ -18,6 +18,12 @@ Last member editing: Johnny Scott.
             text-align: center;
 
         }
+
+        #info {
+            font-size: 40pt;
+            text-align: center;
+
+        }
         
         
         </style>
@@ -59,12 +65,13 @@ Last member editing: Johnny Scott.
 <script src="scripts/vpApp.js"></script>
 <script src="scripts/vcapp.js"></script>
 <script>
-      getTempDetails()
-        getUserDetails()
-       
-        
-        
-         </script>
+        getInfo();
+        getTempDetails();
+        getUserDetails();
+
+          
+          
+           </script>
             
 </head>
 
@@ -75,11 +82,13 @@ Last member editing: Johnny Scott.
         <img src="images/Logo.png" alt="logo">
     </header>
 
-
+    <div id="info"><h1>Loading....</h1></div>
     <div id="uVehicle"><h1>User Vehicle</h1></div>
     <div id="display"><h1>Loading...</h1></div>
     <div id="uVehicle"><h1>New Vehicle</h1></div>
     <div id="tempDisplay"><h1>Loading....</h1><div>
+
+    
     <!-- Main Buttons -->
     <div id="buttonContainer">
 

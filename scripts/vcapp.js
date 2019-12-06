@@ -1,12 +1,13 @@
+
 function getUserDetails() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).onSnapshot(function (doc) {
-             vehicleType = doc.get("car");
-             vehicleType = (doc.get == null) ? "None" : doc.get("car").data;
+             var vehicleType = doc.get("car");
+        
             console.log(doc.get("car"));
-             commute = doc.get("car");
+             var commute = doc.get("car");
             console.log(doc.get("commute"));
-             gasGrade = doc.get("gas");
+             var gasGrade = doc.get("gas");
             console.log(doc.get("gas"));
             document.getElementById("display").innerHTML = "<p>Car Type: " + doc.get("car") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + doc.get("gas") + "</>";
 
@@ -33,12 +34,12 @@ function getUserDetails() {
 function getTempDetails() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).onSnapshot(function (doc) {
-             vehicleType = doc.get("Tempcar");
-            vehicleType = (doc.get == null) ? "None" : doc.get("Tempcar").data;
+             var tempVehicleType = doc.get("Tempcar");
+            tempVehicleType = (doc.get == null) ? "None" : doc.get("Tempcar").data;
             console.log(doc.get("Tempcar"));
-             commute = doc.get("Tempcar");
+             var tempCommute = doc.get("Tempcar");
             console.log(doc.get("Tempcommute"));
-             gasGrade = doc.get("Tempgas");
+             var tempGasGrade = doc.get("Tempgas");
             console.log(doc.get("Tempgas"));
             document.getElementById("tempDisplay").innerHTML = "<p>Car Type: " + doc.get("Tempcar") + "</p><p>Commute: " + doc.get("commute") + " miles</p><p>Fuel: " + doc.get("Tempgas") + "</p>";
             document.getElementById("b6").innerHTML = "";
@@ -276,53 +277,7 @@ function goNewGas() {
    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////Calculate Gas price///////////////////////////////////////////
  /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function getResult() {
 
-    //Store cost per time frame.
-    let weekCost;
-    let monthCost;
-    let yearCost;
-
-    //Determine cost per gallon.
-    
-    console.log(gasPrice);
-    //Determine cost per trip.
-    let tripCost = (tripDistance / MPG) * gasPrice;
-    console.log(tripCost);
-
-    //Assume trip is made 3 times per week.
-    weekCost = "<h2>Per Week: $" + (Math.round(tripCost * 5).toFixed(2)) + "</h2>";
-    monthCost = "<h2>Per Month: $" + (Math.round(tripCost * 15).toFixed(2)) + "</h2>";
-    yearCost = "<h2>Per Year: $" + (Math.round(tripCost * 253).toFixed(2)) + "</h2>";
-
-    //Display results.
-    document.getElementById("ccPrompt").innerHTML = "<h2>Gas Cost</h2><br />" + weekCost + monthCost + yearCost;
-
-};
-
-function getTempResult() {
-
-    //Store cost per time frame.
-    let weekCostTemp;
-    let monthCostTemp;
-    let yearCostTemp;
-
-    //Determine cost per gallon.
-    var costPerG = gasPrice * 0.26;
-    console.log(costPerG);
-    //Determine cost per trip.
-    var tripCost = (tripDistance / MPG) * costPerG * 2;
-    console.log(tripCost);
-
-    //Assume trip is made 3 times per week.
-    var weekCost = "<h2>Per Week: $" + (Math.round((tripCost * 5) * 100) / 100).toFixed(2); + "</h2>";
-    var monthCost = "<h2>Per Month: $" + (Math.round((tripCost * 15) * 100) / 100).toFixed(2); + "</h2>";
-    var yearCost = "<h2>Per Year: $" + (Math.round((tripCost * 180) * 100) / 100).toFixed(2); + "</h2>";
-
-    //Display results.
-    document.getElementById("ccPrompt").innerHTML = "<h2>Gas Cost</h2><br />" + weekCost + monthCost + yearCost;
-
-};
 
 function getStatsButt() {
     document.getElementById("b10").innerHTML = '<button type="button" class="btn btn-success" onclick="goToStats()">Statistics</button>';
@@ -332,6 +287,7 @@ function getStatsButt() {
     document.getElementById("b8").innerHTML = "";
     document.getElementById("b9").innerHTML = "";
     document.getElementById("newVehicle").innerHTML = "";
+   
 }
 
 function goToStats() {
@@ -341,3 +297,13 @@ function goToStats() {
 
 };
 
+function getInfo() {
+        firebase.auth().onAuthStateChanged(function (user) {
+            db.collection("users").doc(user.uid).onSnapshot(function (doc) {
+                document.getElementById("info").innerHTML = "<p>By switching from your " + doc.get("car") + " to a " + doc.get("Tempcar") + ", you will save a total of  __________.</p>";
+    
+            });
+    
+        })
+    };
+        
