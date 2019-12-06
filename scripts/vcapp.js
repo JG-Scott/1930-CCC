@@ -242,7 +242,9 @@ function goNewVehicleProfile() {
 
     document.getElementById("tempDisplay").innerHTML = "<h2>Select a vehicle:</h2>"
     var elem = document.getElementById('tempButton');
+    var elem2 = document.getElementById('tempButton2')
     elem.parentNode.removeChild(elem);
+    elem2.parentNode.removeChild(elem2);
 
     document.getElementById("b6").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempCoupMPG()">Coup</button>';
     document.getElementById("b7").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempSUVMPG()">SUV</button>';
@@ -323,7 +325,7 @@ function getInfo() {
     function changeTimeYear() {
         time = "year";
         
-        document.getElementById("changeable").innerHTML = '<button id="logout2" type="button" class="btn btn-success" onclick="changeTimeMonth()" id="changeable">month</button>';
+        document.getElementById("changeable").innerHTML = '<button id="logout2" type="button" class="btn btn-success" onclick="changeTimeMonth()" id="changeable">See Monthly</button>';
         gasmult = gasmult * (253 / 7);
         getInfo();
 }
@@ -331,7 +333,7 @@ function getInfo() {
 function changeTimeMonth() {
     time = "month";
     getInfo();
-    document.getElementById("changeable").innerHTML = '<button id="logout2" type="button" class="btn btn-success" onclick="changeTimeWeek()" id="changeable">week</button>';
+    document.getElementById("changeable").innerHTML = '<button id="logout2" type="button" class="btn btn-success" onclick="changeTimeWeek()" id="changeable">See Weekly</button>';
     gasmult = gasmult * (20 / 253);
 
 }
@@ -341,7 +343,7 @@ function changeTimeWeek() {
     gasmult = gasmult * (7 / 20);
     getInfo();
 
-    document.getElementById("changeable").innerHTML = '<button id="logout2" type="button" class="btn btn-success" onclick="changeTimeYear()" id="changeable">year</button>';
+    document.getElementById("changeable").innerHTML = '<button id="logout2" type="button" class="btn btn-success" onclick="changeTimeYear()" id="changeable">See Yearly</button>';
 
 
 }

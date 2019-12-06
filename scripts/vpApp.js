@@ -11,7 +11,7 @@ function getUserDetails() {
 
         });
     });
-    document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="goHome()">Home</button>';
+    document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="goHome()">Back to Compare</button>';
     console.log('new');
     document.getElementById("b2").innerHTML = "";
     document.getElementById("b3").innerHTML = "";
