@@ -1,3 +1,31 @@
+function getUserDetails() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users").doc(user.uid).onSnapshot(function (doc) {
+             vehicleType = doc.get("car");
+             vehicleType = (doc.get == null) ? "None" : doc.get("car").data;
+            console.log(doc.get("car"));
+             commute = doc.get("car");
+            console.log(doc.get("commute"));
+             gasGrade = doc.get("gas");
+            console.log(doc.get("gas"));
+            document.getElementById("display").innerHTML = "<h1>Car Type: " + doc.get("car") + "</h1><h2>Commute: " + doc.get("commute") + " miles</h2><h2>Fuel: " + doc.get("gas") + "</h2>";
+
+        });
+
+    })
+    
+    document.getElementById("b1").innerHTML = "";
+    document.getElementById("b2").innerHTML = "";
+    document.getElementById("b3").innerHTML = "";
+    document.getElementById("b4").innerHTML = "";
+
+};
+
+
+
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////Temporary Details//////////////////////////////////////////////
@@ -17,6 +45,7 @@ function getTempDetails() {
             document.getElementById("b7").innerHTML = "";
             document.getElementById("b8").innerHTML = "";
             document.getElementById("b9").innerHTML = "";
+            document.getElementById("b10").innerHTML = "";
         });
     })
 };
@@ -35,7 +64,7 @@ function getTempRegPrice() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "Tempgas": "1.46",
+            "Tempgas": "5.53",
             "TempgasType": "Regular"
         });
     });
@@ -214,7 +243,9 @@ function getTempPMDistance() {
 function goNewVehicleProfile() {
 
     document.getElementById("tempDisplay").innerHTML = "<h2>Select a vehicle:</h2>"
-    document.getElementById("tempButton").innerHTML = "";
+    var elem = document.getElementById('tempButton');
+    elem.parentNode.removeChild(elem);
+
     document.getElementById("b6").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempCoupMPG()">Coup</button>';
     document.getElementById("b7").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempSUVMPG()">SUV</button>';
     document.getElementById("b8").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempSedanMPG()">Sedan</button>';
@@ -238,4 +269,58 @@ function goNewGas() {
     document.getElementById("b8").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempPremPrice()">Premium</button>';
     document.getElementById("b9").innerHTML = '<button type="button" class="btn btn-success" onclick="getTempDieselPrice()">Diesel</button>'
 }
+
+
+
+
+   /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////Calculate Gas price///////////////////////////////////////////
+ /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function getResult() {
+
+    //Store cost per time frame.
+    let weekCost;
+    let monthCost;
+    let yearCost;
+
+    //Determine cost per gallon.
+    
+    console.log(gasPrice);
+    //Determine cost per trip.
+    let tripCost = (tripDistance / MPG) * gasPrice;
+    console.log(tripCost);
+
+    //Assume trip is made 3 times per week.
+    weekCost = "<h2>Per Week: $" + (Math.round(tripCost * 5).toFixed(2)) + "</h2>";
+    monthCost = "<h2>Per Month: $" + (Math.round(tripCost * 15).toFixed(2)) + "</h2>";
+    yearCost = "<h2>Per Year: $" + (Math.round(tripCost * 253).toFixed(2)) + "</h2>";
+
+    //Display results.
+    document.getElementById("ccPrompt").innerHTML = "<h2>Gas Cost</h2><br />" + weekCost + monthCost + yearCost;
+
+};
+
+function getTempResult() {
+
+    //Store cost per time frame.
+    let weekCostTemp;
+    let monthCostTemp;
+    let yearCostTemp;
+
+    //Determine cost per gallon.
+    var costPerG = gasPrice * 0.26;
+    console.log(costPerG);
+    //Determine cost per trip.
+    var tripCost = (tripDistance / MPG) * costPerG * 2;
+    console.log(tripCost);
+
+    //Assume trip is made 3 times per week.
+    var weekCost = "<h2>Per Week: $" + (Math.round((tripCost * 5) * 100) / 100).toFixed(2); + "</h2>";
+    var monthCost = "<h2>Per Month: $" + (Math.round((tripCost * 15) * 100) / 100).toFixed(2); + "</h2>";
+    var yearCost = "<h2>Per Year: $" + (Math.round((tripCost * 180) * 100) / 100).toFixed(2); + "</h2>";
+
+    //Display results.
+    document.getElementById("ccPrompt").innerHTML = "<h2>Gas Cost</h2><br />" + weekCost + monthCost + yearCost;
+
+};
 
