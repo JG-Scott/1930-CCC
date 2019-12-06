@@ -20,7 +20,7 @@ function getCoupMPG() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "mpg": "22",
+            "mpg": "28",
             "car": "Coupe",
         });
     });
@@ -35,7 +35,7 @@ function getSUVMPG() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "mpg": "30",
+            "mpg": "24",
             "car": "SUV"
         });
     });
@@ -51,7 +51,7 @@ function getSedanMPG() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "mpg": "45",
+            "mpg": "25",
             "car": "Sedan"
         });
     });
@@ -67,7 +67,7 @@ function getTruckMPG() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "mpg": "48",
+            "mpg": "23",
             "car": "Truck"
         });
     });
@@ -263,12 +263,12 @@ function getResult() {
 
     console.log("Determining cost...")
 
-    //Determine cost per gallon.
+    //Determine cost per gallon. (Round trip)
     var costPerG = gasPrice * 3.78541;
-    console.log("Cost Per Gallon: " + costPerG);
+    console.log("Cost Per Gallon: " + costPerG) * 2;
 
     //Determine cost per trip.
-    var tripCost = (tripDistance / MPG) * costPerG * 2;
+    var tripCost = (tripDistance / MPG) * costPerG;
     console.log("Cost per round trip: " + tripCost);
 
     //////////////////////////////////////////////////////////////////////////////////////////////////
