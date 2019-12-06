@@ -216,7 +216,7 @@ function goGas() {
 
     document.getElementById("ccPrompt").innerHTML = "<h2>Select gas grade</h2>"
     document.getElementById("b1").innerHTML = '<button type="button" class="btn btn-success" onclick="getRegPrice()">Regular</button>';
-    document.getElementById("b2").innerHTML = '<button itype="button" class="btn btn-success" onclick="getMidPrice()">Mid-Gade</button>';
+    document.getElementById("b2").innerHTML = '<button itype="button" class="btn btn-success" onclick="getMidPrice()">Mid-Grade</button>';
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="getPremPrice()">Premium</button>';
     document.getElementById("b4").innerHTML = '<button type="button" class="btn btn-success" onclick="getDieselPrice()">Diesel</button>';
     document.getElementById("current").innerHTML = "";
@@ -253,7 +253,7 @@ function getCurrentProfile() {
             document.getElementById("b2").innerHTML = "";
             document.getElementById("b3").innerHTML = "";
             document.getElementById("b4").innerHTML = "";
-            document.getElementById("current").innerHTML = "<button type='button' id='btn1' class='btn btn-success' onclick='goVehicleProfile()'>New Profile</button>";
+            document.getElementById("current").innerHTML = "";
             document.getElementById("start").innerHTML = "<button type='button' id='btn1' class='btn btn-success' onclick='getResult()'>Get Results</button>";
         });
     })
@@ -280,5 +280,6 @@ function getResult() {
 
     //Display results.
     document.getElementById("ccPrompt").innerHTML = "<h2>Gas Cost</h2><br />" + weekCost + monthCost + yearCost;
-
+    document.getElementById("current").innerHTML = "";
+    document.getElementById("start").innerHTML = "";
 };
