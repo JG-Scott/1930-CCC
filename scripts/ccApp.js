@@ -20,7 +20,7 @@ function getCoupMPG() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "mpg": "22",
+            "mpg": "28",
             "car": "Coupe",
         });
     });
@@ -35,7 +35,7 @@ function getSUVMPG() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "mpg": "30",
+            "mpg": "24",
             "car": "SUV"
         });
     });
@@ -51,7 +51,7 @@ function getSedanMPG() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "mpg": "45",
+            "mpg": "25",
             "car": "Sedan"
         });
     });
@@ -67,7 +67,7 @@ function getTruckMPG() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "mpg": "48",
+            "mpg": "23",
             "car": "Truck"
         });
     });
@@ -133,7 +133,7 @@ function getRegPrice() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "gas": "1.46",
+            "gas": "1.35",
             "gasType": "Regular"
         });
     });
@@ -149,7 +149,7 @@ function getMidPrice() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "gas": "5.88",
+            "gas": "1.47",
             "gasType": "Mid-grade"
         });
     });
@@ -165,7 +165,7 @@ function getPremPrice() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "gas": "6.12",
+            "gas": "1.53",
             "gasType": "Premium"
         });
     });
@@ -180,7 +180,7 @@ function getDieselPrice() {
     });
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).update({
-            "gas": "5.84",
+            "gas": "1.46",
             "gasType": "Diesel"
         });
     });
@@ -261,21 +261,21 @@ function getCurrentProfile() {
 
 function getResult() {
 
-    //Store cost per time frame.
-    var weekCost;
-    var monthCost;
-    var yearCost;
+    console.log("Determining cost...")
 
-    //Determine cost per gallon.
-    var costPerG = gasPrice * 0.26;
-    console.log(costPerG);
+    //Determine cost per gallon. (Round trip)
+    var costPerG = gasPrice * 3.78541;
+    console.log("Cost Per Gallon: " + costPerG) * 2;
+
     //Determine cost per trip.
-    var tripCost = (tripDistance / MPG) * costPerG * 2;
-    console.log(tripCost);
+    var tripCost = (tripDistance / MPG) * costPerG;
+    console.log("Cost per round trip: " + tripCost);
 
-    //Assume trip is made 3 times per week.
-    var weekCost = "<h2>Per Week: $" + (Math.round((tripCost * 5) * 100) / 100).toFixed(2); + "</h2>";
-    var monthCost = "<h2>Per Month: $" + (Math.round((tripCost * 15) * 100) / 100).toFixed(2); + "</h2>";
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    //  Trip is made THREE times a week. MATH.ROUND formats the number. Calculation done above.     //
+    //////////////////////////////////////////////////////////////////////////////////////////////////
+    var weekCost = "<h2>Per Week: $" + (Math.round((tripCost * 3) * 100 / 100)).toFixed(2); + "</h2>";
+    var monthCost = "<h2>Per Month: $" + (Math.round((tripCost * 15) * 100 / 100)).toFixed(2); + "</h2>";
     var yearCost = "<h2>Per Year: $" + (Math.round((tripCost * 180) * 100) / 100).toFixed(2); + "</h2>";
 
     //Display results.

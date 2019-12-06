@@ -8,7 +8,7 @@ let gasGrade = 00;
 
 function getUserDetails() {
     firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("user").doc(user.uid).onSnapshot(function (doc) {
+        db.collection("users").doc(user.uid).onSnapshot(function (doc) {
              vehicleType = doc.get("car");
             vehicleType = (doc.get == null) ? "None" : doc.get("car").data;
             console.log(doc.get("car"));
@@ -242,35 +242,4 @@ function goGas() {
     document.getElementById("b2").innerHTML = '<button itype="button" class="btn btn-success" onclick="getMidPrice()">Mid-Gade</button>';
     document.getElementById("b3").innerHTML = '<button type="button" class="btn btn-success" onclick="getPremPrice()">Premium</button>';
     document.getElementById("b4").innerHTML = '<button type="button" class="btn btn-success" onclick="getDieselPrice()">Diesel</button>'
-}
-
-////////////////////////////////////////////////////////////////////////////
-///////////////////////////////Code That Builds The Display/////////////////
-////////////////////////////////////////////////////////////////////////////
-function getCurrentProfile() {
-
-    document.getElementById("display").innerHTML = "<h1>Car Type: " + carType + "</h1><h2>Commute: " + tripDistance + " miles</h2><h2>Fuel: " + gasPrice + "</h2>";
-    document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
-    document.getElementById("b2").innerHTML = "";
-    document.getElementById("b3").innerHTML = "";
-    document.getElementById("b4").innerHTML = "";
-}
-
-// function getUserDetails() {
-//     firebase.auth().onAuthStateChanged(function (user) {
-//         db.collection("users").doc(user.uid).onSnapshot(function (doc) {
-//             carType = doc.get("car");
-//             tripDistance = doc.get("commute");
-//             gasPrice = doc.get("gasType)");
-//             console.log(gasPrice);
-//         });
-//     })
-// };
-function newProfile() {
-
-    document.getElementById("display").innerHTML = "<h1>No Profile</h1>";
-    document.getElementById("b1").innerHTML = "<button type='button' class='btn btn-success' onclick='goVehicleProfile()'>NEW</button>";
-    document.getElementById("b2").innerHTML = "";
-    document.getElementById("b3").innerHTML = "";
-    document.getElementById("b4").innerHTML = "";
 }
